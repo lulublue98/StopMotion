@@ -22,6 +22,10 @@ public class GuiTest extends JFrame {
 	pane.add(label);
 	button = new JButton("button");
 	pane.add(button);
+	button2 = new JButton("button2");
+	pane.add(button2);
+	buttone3 = new JButton("button3");
+	pane.add(button3);
 	exit = new JButton("EXIT");
 	pane.add(exit);
 	text = new JTextArea("text goes here");

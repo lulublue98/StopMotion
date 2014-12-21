@@ -18,20 +18,22 @@ public class GuiTest extends JFrame {
 	pane = getContentPane();
 	//pane.setLayout(new GridLayout(3,3));
 	pane.setLayout(new FlowLayout());
+	
 	label = new JLabel("buttons: ");
-	pane.add(label);
-	button = new JButton("button");
-	pane.add(button);
-	button2 = new JButton("button2");
-	pane.add(button2);
-	buttone3 = new JButton("button3");
-	pane.add(button3);
+	b1 = new JButton("button");
+	b2 = new JButton("button2");
+	b3 = new JButton("button3");
 	exit = new JButton("EXIT");
-	pane.add(exit);
 	text = new JTextArea("text goes here");
 	text.setBorder(BorderFactory.createLineBorder(Color.blue,2));
 	text.setColumns(80);
 	text.setRows(10);
+	
+	pane.add(label);
+	pane.add(b);
+	pane.add(b1);
+	pane.add(b2);
+	pane.add(exit);
 	pane.add(text);
 
 	canvas = new JPanel();

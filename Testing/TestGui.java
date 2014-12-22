@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class TestGui extends JFrame {
 
-    private Container pane;
+    private Container pane; 
     private JButton b1, b2, b3, b4, exit;
     private JLabel label;
     private JPanel canvas;

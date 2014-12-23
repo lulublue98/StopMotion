@@ -4,7 +4,7 @@ import java.awt.*;
 public class TestGui extends JFrame {
 
     private Container pane; 
-    private JButton b1, b2, b3, b4, b5, exit;
+    private JButton b1, b2, b3, b4, exit;
     private JLabel label;
     private JPanel canvas;
 
@@ -21,7 +21,6 @@ public class TestGui extends JFrame {
 	b2 = new JButton("                   button 2                    ");
 	b3 = new JButton("                   button 3                    ");
 	b4 = new JButton("                   button 4                    ");
-	b5 = new JButton("                   button 5                    ");
 	exit = new JButton("                     EXIT                         ");
 	pane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
@@ -29,7 +28,6 @@ public class TestGui extends JFrame {
 	pane.add(b2);
 	pane.add(b3);
 	pane.add(b4);
-	pane.add(b5);
 	pane.add(exit);
 
 	canvas = new JPanel();

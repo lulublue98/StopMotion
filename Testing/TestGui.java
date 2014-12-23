@@ -29,6 +29,7 @@ public class TestGui extends JFrame {
 	pane.add(b2);
 	pane.add(b3);
 	pane.add(b4);
+	pane.add(b5);
 	pane.add(exit);
 
 	canvas = new JPanel();

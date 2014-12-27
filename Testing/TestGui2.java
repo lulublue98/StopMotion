@@ -39,6 +39,9 @@ public class TestGui2 extends JFrame {
 	c.gridy = 0;
 	pane.add(b3, c);
 
+	c.gridx = 3;
+	c.gridy = 0;
+	pane.add(exit, c);
     }
 
     public static void main(String[] args) {

@@ -22,6 +22,9 @@ public class TestGui2 extends JFrame {
 	b2 = new JButton("button 2");
 	b3 = new JButton("button 3");
 	exit = new JButton("exit");
+	canvas = new JPanel();
+	canvas.setPreferredSize(new Dimension(600,500));
+	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,5));
 
 	c.weightx = 0.5;
 	c.weighty = 0;
@@ -42,6 +45,10 @@ public class TestGui2 extends JFrame {
 	c.gridx = 3;
 	c.gridy = 0;
 	pane.add(exit, c);
+
+	c.gridx = 0;
+	c.gridy = -3;
+	pane.add(canvas, c);
     }
 
     public static void main(String[] args) {

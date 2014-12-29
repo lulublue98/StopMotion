@@ -1,0 +1,32 @@
+import javax.swing.*;
+import javax.swing.colorchooser.*;
+import javax.swing.event.*;
+import java.awt.*;
+
+public class TestGui3 extends JFrame {
+
+    private Container pane; 
+    private JButton b1, b2, b3, b4, exit, chooseButton;
+    private JLabel label;
+    private JPanel p, p2, p3;
+
+    public TestGui3() {
+	setTitle("Test Gui Page");
+	setSize(1000,700);
+	setLocation(25,25);
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	
+	pane = getContentPane();
+	pane.setLayout(new GridBagLayout());
+	GridBagConstraints gbc = new GridBagConstraints();
+	gbc.insets = new Insets(15,15,15,15);
+
+	p = new JPanel(new GridBagLayout());
+	p2 = new JPanel();
+	p3 = new JPanel();
+
+	p.add(b1, gbc);
+	p.add(b2, gbc);
+	p.add(b3, gbc);
+
+	add(p, BorderLayout.CENTER);

@@ -6,9 +6,9 @@ import java.awt.*;
 public class TestGui2 extends JFrame {
 
     private Container pane; 
-    private JButton b1, b2, b3, b4, exit;
+    private JButton b1, b2, b3, b4, exit, chooseButton;
     private JLabel label;
-    private JPanel canvas;
+    private JPanel canvas, panel;
 
     public TestGui2() {
 	setTitle("Test Gui Page");
@@ -27,6 +27,10 @@ public class TestGui2 extends JFrame {
 	canvas = new JPanel();
 	canvas.setPreferredSize(new Dimension(600,500));
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,5));
+	panel = new JPanel();
+	panel.setPreferredSize(new Dimension (0,500));
+	panel.setBorder(BorderFactory.createLineBorder(Color.red, 5));
+			       
 
 	c.weightx = 0.5;
 	c.weighty = 0;
@@ -51,7 +55,12 @@ public class TestGui2 extends JFrame {
 	c.gridx = 0;
 	c.gridy = -3;
 	pane.add(canvas, c);
+			
+	c.gridx = 1;
+	c.gridy = -3;
+	pane.add(panel, c);
     }
+    
 
     public static void main(String[] args) {
 	TestGui2 T = new TestGui2();

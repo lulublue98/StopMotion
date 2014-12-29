@@ -6,4 +6,6 @@ Project Log
 
 12/27/14 -- Tried new layout GridBagLayout (SC)
 
-12/28/14 -- Worked some more with GridBagLayout and tried out color panel (SC)
+12/28/14 -- Worked some more with GridBagLayout (SC)
+
+12/29/14 -- Tried two new approaches to the layout but still having trouble (SC)

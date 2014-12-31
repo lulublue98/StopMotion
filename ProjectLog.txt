@@ -9,3 +9,5 @@ Project Log
 12/28/14 -- Worked some more with GridBagLayout (SC)
 
 12/29/14 -- Tried two new approaches to the layout but still having trouble (SC)
+
+12/30/14 -- Very successful with GridBagLayout, just one or two more things to fix (SC)

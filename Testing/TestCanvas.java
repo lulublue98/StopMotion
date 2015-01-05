@@ -10,10 +10,15 @@ import javax.imageio.*;
 public class TestCanvas extends JPanel implements MouseListener, MouseMotionListener {
 
     private ArrayList<Line> lines = new ArrayList<Line>();
+    private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
     private boolean drawing = false;
     private boolean enabled = true;
+    private CheckboxGroup options;
+
+    public void mouseMoved(MouseEvent e){
+    }
 
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
@@ -29,6 +34,29 @@ public class TestCanvas extends JPanel implements MouseListener, MouseMotionList
 				      Color.green));
 		oldX = e.getX();
 		oldY = e.getY();
+	    }
+	this.update(this.getGraphics());
+    }
+    public void mouseEntered(MouseEvent e) {
+    }
+    public void mouseExited(MouseEvent e) {
+    }
+    public void mouseClicked(MouseEvent e) {
+    }
+    public void mousePressed(MouseEvent e) {
+	startX = e.getX();
+	startY = e.getY();
+	oldX = startX;
+	oldY = startY;
+    }
+    public void mouseReleased(MouseEvent e) {
+	String opt = options.getSelectedCheckbox().getLabel();
+	if (opt.equals("Line"))
+	    {
+		this.addLine(new Line(startX,startY,
+				      e.getX(),e.getY(),
+				      Color.red));
+		this.stopDrawing();
 	    }
 	this.update(this.getGraphics());
     }

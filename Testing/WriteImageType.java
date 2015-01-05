@@ -32,6 +32,7 @@ public class WriteImageType {
       ig2.setPaint(Color.black);
       ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
       */
+
       ImageIO.write(bi, "PNG", new File("c:\\TestFile.PNG"));
 
     } catch (IOException ie) {

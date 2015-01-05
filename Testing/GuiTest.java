@@ -8,6 +8,7 @@ public class GuiTest extends JFrame {
     private JLabel label;
     private JTextArea text;
     private JPanel canvas;
+    private JButton b1, b2, b3;
 
     public GuiTest() {
 	setTitle("Gui Test Page");
@@ -30,9 +31,9 @@ public class GuiTest extends JFrame {
 	text.setRows(10);
 	
 	pane.add(label);
-	pane.add(b);
 	pane.add(b1);
 	pane.add(b2);
+	pane.add(b3);
 	pane.add(exit);
 	pane.add(text);
 

@@ -11,3 +11,5 @@ Project Log
 12/29/14 -- Tried two new approaches to the layout but still having trouble (SC)
 
 12/30/14 -- Very successful with GridBagLayout, just one or two more things to fix (SC)
+
+1/5/15 -- Worked on capturing the panel and saving it as a picture (SC)

@@ -14,13 +14,13 @@ import javax.imageio.ImageIO;
 public class WriteImageType {
   static public void main(String args[]) throws Exception {
     try {
-      int width = 200, height = 200;
+      int width = 600, height = 500;
 
       // TYPE_INT_ARGB specifies the image format: 8-bit RGBA packed
       // into integer pixels
       BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
-      Graphics2D ig2 = bi.createGraphics();
+      //     Graphics2D ig2 = bi.createGraphics();
 
       /*
       Font font = new Font("TimesRoman", Font.BOLD, 20);

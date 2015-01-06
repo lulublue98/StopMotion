@@ -1,11 +1,21 @@
 import java.io.*;
 import java.util.*;
-
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class Canvas extends JPanel implements MouseListener, MouseMotionListener {
     private ArrayList<Line> lines = new ArrayList<Line>();
     private Line tmpline;
@@ -102,5 +112,17 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 		g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	    }
     }
+
+    public void Picture(ActionEvent e){
+	try {
+	    int width = 600, height = 500;
+	    BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+	    Graphics2D ig2 = bi.createGraphics();
+	    ImageIO.write(bi, "PNG", new File("c:\\TestFile.PNG"));
+	} catch (IOException ie) {
+	    ie.printStackTrace();
+	}
+    }
+
 
 }

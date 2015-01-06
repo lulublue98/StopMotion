@@ -9,7 +9,7 @@ public class TestGui4_1 {
 	JButton b1 = new JButton("         Button 1         ");
 	JButton b2 = new JButton("         Button 2         ");
 	JButton b3 = new JButton("         Button 3         ");
-	JButton b4 = new JButton("         Button 4         ");
+	JButton b4 = new JButton("         Add Pic          ");
 	JButton b5 = new JButton("Button 5");
 	JButton b6 = new JButton("Button 6");
 	JButton b7 = new JButton("Button 7");

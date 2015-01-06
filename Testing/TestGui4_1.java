@@ -13,7 +13,7 @@ public class TestGui4_1 {
 	JButton b5 = new JButton("Button 5");
 	JButton b6 = new JButton("Button 6");
 	JButton b7 = new JButton("Button 7");
-
+        Checkbox lines = new Checkbox("Lines",options,false);
 
 	JFrame frame = new JFrame("Test Gui");
 	frame.setSize(1000,700);
@@ -25,7 +25,7 @@ public class TestGui4_1 {
 	
 	TestCanvas panel2 = new TestCanvas(options);
 	frame.getContentPane().add(panel2, BorderLayout.WEST);
-	//panel2.setPreferredSize(new Dimension(600,500));
+	panel2.setPreferredSize(new Dimension(600,500));
 	panel2.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 
 	JPanel panel3 = new JPanel(new GridBagLayout());

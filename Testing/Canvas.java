@@ -65,6 +65,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);
     }
+
     public void clear() {
 	lines = new ArrayList<Line>();
 	drawing=false;
@@ -81,7 +82,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     }
 
     public Dimension getPreferredSize() {
-    return new Dimension(300,300);
+	return new Dimension(300,300);
     }
 
     public void addLine(Line l) {
@@ -101,4 +102,5 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 		g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	    }
     }
+
 }

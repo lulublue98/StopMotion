@@ -61,7 +61,7 @@ public class TestCanvas extends JPanel implements MouseListener, MouseMotionList
 	this.update(this.getGraphics());
     }
 
-    public Canvas(CheckboxGroup options) {
+    public TestCanvas(CheckboxGroup options) {
 	this.options = options;
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);

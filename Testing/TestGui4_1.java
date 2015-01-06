@@ -11,6 +11,7 @@ public class TestGui4_1 {
     private Checkbox Linebox;
     private Checkbox Drawbox;
 
+<<<<<<< HEAD
     /*
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == clear) {
@@ -36,6 +37,17 @@ public class TestGui4_1 {
 	}
     }
     */    
+=======
+	CheckboxGroup options = new CheckboxGroup();
+	JButton b1 = new JButton("         Button 1         ");
+	JButton b2 = new JButton("         Button 2         ");
+	JButton b3 = new JButton("         Button 3         ");
+	JButton b4 = new JButton("         Add Pic          ");
+	JButton b5 = new JButton("Button 5");
+	JButton b6 = new JButton("Button 6");
+	JButton b7 = new JButton("Button 7");
+        Checkbox lines = new Checkbox("Lines",options,false);
+>>>>>>> cf386c9df923bcc00fb53ed3d621aa8180a9e7d2
 
     public TestGui4_1() {
 	

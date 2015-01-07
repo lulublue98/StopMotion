@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
-public class Gui implements ActionListener {
+public class TestGui4_2 implements ActionListener {
 
     private JFrame frame;
     private JButton clear;
@@ -24,7 +24,7 @@ public class Gui implements ActionListener {
 	}
     }
 
-    public Gui() {
+    public TestGui4_1() {
 	
 	options = new CheckboxGroup();
 	Linebox = new Checkbox("Line",options,true);

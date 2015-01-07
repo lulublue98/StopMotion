@@ -18,18 +18,20 @@ public class Gui implements ActionListener {
     private Checkbox Drawbox;
 
     public void actionPerformed(ActionEvent e) {
-	if (e.getSource() == clear) {
+	if ( e.getSource() == clear ) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
-	}
+	} 
     }
 
     public Gui() {
 	
+	color = new JButton(Color.red);
+
 	options = new CheckboxGroup();
 	Linebox = new Checkbox("Line",options,true);
-	Drawbox = new Checkbox("Freehand",options,true);
-	
+	Drawbox = new Checkbox("Freehand",options,true);	
+
 	frame = new JFrame("Gui");
 	frame.setSize(1000,700);
 	frame.setVisible(true);
@@ -62,6 +64,8 @@ public class Gui implements ActionListener {
 	panel2.add(Linebox, c);
 	c.gridy = 1;
 	panel2.add(Drawbox, c);
+	c.gridy = 2;
+	panel2.add(Color, c);
 
     }
 

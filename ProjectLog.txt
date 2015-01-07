@@ -13,3 +13,5 @@ Project Log
 12/30/14 -- Very successful with GridBagLayout, just one or two more things to fix (SC)
 
 1/5/15 -- Worked on capturing the panel and saving it as a picture (SC)
+
+1/6/15 -- Worked more on saving a panel as a picture (SC)

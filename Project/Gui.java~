@@ -1,28 +1,41 @@
-import java.io.*;
-import java.util.*;
-
-import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import javax.imageio.*;
+import java.awt.*;
 
-public class Gui implements ActionListener {
+public class Gui {
 
     private JFrame frame;
     private JButton clear;
-    private Canvas canvas;
+    private TestCanvas canvas;
     private JPanel panel, panel2;
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
 
+    /*
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == clear) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
 	}
+	else if (e.getSource() == quit) {
+	    System.exit(0);
+	}
+	else if (e.getSource() == doStuff) {
+	    String opt = options.getSelectedCheckbox().getLabel();
+	    int n;
+	    if (opt.equals("Triple"))
+		n=3;
+	    else if (opt.equals("Double"))
+		n = 2;
+	    else
+		n=1;
+	    String s = fnamefield.getText();
+	    for (int i=0;i<n;i++)
+		System.out.println(i+":"+s);
+	    System.out.println();
+	}
     }
+    */
 
     public Gui() {
 	
@@ -30,7 +43,7 @@ public class Gui implements ActionListener {
 	Linebox = new Checkbox("Line",options,true);
 	Drawbox = new Checkbox("Freehand",options,true);
 	
-	frame = new JFrame("Gui");
+	frame = new JFrame("Test Gui");
 	frame.setSize(1000,700);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,11 +51,8 @@ public class Gui implements ActionListener {
 	panel = new JPanel(new GridBagLayout());
 	panel.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(panel, BorderLayout.NORTH);
-
-	clear = new JButton("Clear");
-	panel.add(clear);
 	
-	canvas = new Canvas(options);
+	canvas = new TestCanvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 5));

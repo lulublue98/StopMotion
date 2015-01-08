@@ -24,13 +24,10 @@ public class Gui implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
 	    canvas.clear();
-<<<<<<< HEAD
 	    //	    canvas.paintComponent(canvas.getGraphics());
 	}
-=======
 	    canvas.paintComponent(canvas.getGraphics());
 	} 
->>>>>>> c4e23b2968d53900e387aeea44532606381b9ec5
     }
 
     public Gui() {

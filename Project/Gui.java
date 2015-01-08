@@ -24,8 +24,6 @@ public class Gui implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
 	    canvas.clear();
-	    //	    canvas.paintComponent(canvas.getGraphics());
-	}
 	    canvas.paintComponent(canvas.getGraphics());
 	}
     }

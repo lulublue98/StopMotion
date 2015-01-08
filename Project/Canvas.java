@@ -13,6 +13,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
+    private Color c;
     private boolean drawing = false;
     private boolean enabled = true;
     private CheckboxGroup options;
@@ -26,12 +27,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	if (opt.equals("Line")) {
 		this.startDrawing(new Line(startX,startY,
 					   e.getX(),e.getY(),
-					   Color.blue));
+					   Color.c));
 	    }
 	else if (opt.equals("Freehand")) {
 		this.addLine(new Line(oldX, oldY,
 				      e.getX(),e.getY(),
-				      Color.green));
+				      Color.c));
 		oldX = e.getX();
 		oldY = e.getY();
 	    }
@@ -55,7 +56,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    {
 		this.addLine(new Line(startX,startY,
 				      e.getX(),e.getY(),
-				      Color.red));
+				      Color.c));
 		this.stopDrawing();
 	    }
 	this.update(this.getGraphics());
@@ -67,6 +68,9 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	this.addMouseMotionListener(this);
     }
 
+    public void setColor( Color color ) {
+	c = new Color( color );
+    }
 
     public void startDrawing(Line l) {
 	drawing = true;

@@ -28,7 +28,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 					   e.getX(),e.getY(),
 					   Color.blue));
 	    }
-	else if (opt.equals("Draw")) {
+	else if (opt.equals("Freehand")) {
 		this.addLine(new Line(oldX, oldY,
 				      e.getX(),e.getY(),
 				      Color.green));

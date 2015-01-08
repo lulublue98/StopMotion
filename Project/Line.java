@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
+
 public class Line {
 
     public int x0,y0,x1,y1;

@@ -1,49 +1,38 @@
-import javax.swing.*;
-import java.awt.*;
+import java.io.*;
+import java.util.*;
 
-public class Gui {
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import javax.imageio.*;
+
+public class Gui implements ActionListener {
 
     private JFrame frame;
     private JButton clear;
-    private TestCanvas canvas;
+    private Canvas canvas;
     private JPanel panel, panel2;
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
 
-    /*
     public void actionPerformed(ActionEvent e) {
-	if (e.getSource() == clear) {
+	if ( e.getSource() == clear ) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
-	}
-	else if (e.getSource() == quit) {
-	    System.exit(0);
-	}
-	else if (e.getSource() == doStuff) {
-	    String opt = options.getSelectedCheckbox().getLabel();
-	    int n;
-	    if (opt.equals("Triple"))
-		n=3;
-	    else if (opt.equals("Double"))
-		n = 2;
-	    else
-		n=1;
-	    String s = fnamefield.getText();
-	    for (int i=0;i<n;i++)
-		System.out.println(i+":"+s);
-	    System.out.println();
-	}
+	} 
     }
-    */
 
     public Gui() {
 	
+	color = new JButton(Color.red);
+
 	options = new CheckboxGroup();
 	Linebox = new Checkbox("Line",options,true);
-	Drawbox = new Checkbox("Freehand",options,true);
-	
-	frame = new JFrame("Test Gui");
+	Drawbox = new Checkbox("Freehand",options,true);	
+
+	frame = new JFrame("Gui");
 	frame.setSize(1000,700);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,8 +40,11 @@ public class Gui {
 	panel = new JPanel(new GridBagLayout());
 	panel.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(panel, BorderLayout.NORTH);
+
+	clear = new JButton("Clear");
+	panel.add(clear);
 	
-	canvas = new TestCanvas(options);
+	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
@@ -72,6 +64,8 @@ public class Gui {
 	panel2.add(Linebox, c);
 	c.gridy = 1;
 	panel2.add(Drawbox, c);
+	c.gridy = 2;
+	panel2.add(Color, c);
 
     }
 

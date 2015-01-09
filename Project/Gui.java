@@ -32,8 +32,11 @@ public class Gui implements ActionListener {
 	if ( e.getSource() == clear ) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
-	} else if ( e.getSource() == c1 || c2 || c3 || c4 || c5 || c6
-		    || c7 || c8 || 
+	} else if ( e.getSource() == c1 ) {
+	    Color tempcolor = new Color(0, 0, 0);
+	    tempcolor = c1.getColor();
+	    canvas.setLineColor( tempcolor );
+	} 
     }
 
     public Gui() {

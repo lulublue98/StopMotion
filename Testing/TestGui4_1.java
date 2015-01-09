@@ -26,7 +26,7 @@ public class TestGui4_1 {
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
-    private static final String IMAGE_ADDR = "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/" + "Schnepfenfliege_Rhagio_scolopaceus2.jpg/250px-Schnepfenfliege_Rhagio_scolopaceus2.jpg"; 
+    private static final String IMAGE_ADDR = "http://www.slate.com/content/dam/slate/blogs/the_slatest/2014/05/09/amazon_white_background_patent_online_sales_giant_files_quesitonable_claim/screen_shot_20140509_at_4.01.21_pm.png.CROP.promo-medium2.01.21_pm.png"; 
     private static final String IMAGE_PANEL = "Image Panel";  
     private static final String IMAGE_PATH = "1.jpg";
 
@@ -91,7 +91,7 @@ public class TestGui4_1 {
 	panel2.add(Linebox, c);
 	c.gridy = 1;
 	panel2.add(Drawbox, c);
-
+	/*
 	BufferedImage image = null;  
 	try  
 	    {  
@@ -113,7 +113,16 @@ public class TestGui4_1 {
 	frame.getContentPane().add(new UploadPics().getComponent()); 
 	frame.pack(); 
     } 
+	*/
 
+	/*
+	JFrame f = new JFrame("stackoverflow") { 
+		private Image backgroundImage = ImageIO.read(new File("whitebg.png")); 
+		    super.paint(g);
+		    g.drawImage(backgroundImage, 0, 0, null);
+	    }
+
+	*/
     public static void main(String[] args) {
 	TestGui4_1 T = new TestGui4_1();
     }

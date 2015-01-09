@@ -20,12 +20,23 @@ public class Gui implements ActionListener {
     private ColorButton c1;
     private ColorButton c2;
     private ColorButton c3;
+    private ColorButton c4;
+    private ColorButton c5;
+    private ColorButton c6;
+    private ColorButton c7;
+    private ColorButton c8;
+    private ColorButton c9;
+    private ColorButton c10;
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
-	}
+	} else if ( e.getSource() == c1 ) {
+	    Color tempcolor = new Color(0, 0, 0);
+	    tempcolor = c1.getColor();
+	    canvas.setLineColor( tempcolor );
+	} 
     }
 
     public Gui() {
@@ -71,6 +82,27 @@ public class Gui implements ActionListener {
 	c1 = new ColorButton(10, 100, 255);
 	c2 = new ColorButton(255, 190, 190);
 	c3 = new ColorButton(100, 200, 50);
+	/*
+	c4 = new ColorButton(0, 0, 0);
+	c5 = new ColorButton(0, 0, 0);
+	c6 = new ColorButton(0, 0, 0);
+	c7 = new ColorButton(0, 0, 0);
+	c8 = new ColorButton(0, 0, 0);
+	c9 = new ColorButton(0, 0, 0);
+	c10 = new ColorButton(0, 0, 0);
+	*/
+	c1.addActionListener(this);
+	c2.addActionListener(this);
+	c3.addActionListener(this);
+	/*
+	c4.addActionListener(this);
+	c5.addActionListener(this);
+	c6.addActionListener(this);
+	c7.addActionListener(this);
+	c8.addActionListener(this);
+	c9.addActionListener(this);
+	c10.addActionListener(this);
+	*/
 
 	GridBagConstraints g = new GridBagConstraints();
 	g.gridx = 0;
@@ -80,6 +112,7 @@ public class Gui implements ActionListener {
 	ColorPanel.add(c2, g);
 	g.gridx = 2;
 	ColorPanel.add(c3, g);
+
 	f.gridy = 2;
 	toolbox.add(ColorPanel, f);
 

@@ -7,13 +7,20 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
-public class ColorButton extends JPanel {
+public class ColorButton extends JPanel implements ActionListener {
 
-    public Color color;
+    private Color color;
 
-    public ColorButton( int a, int b, int c ) {
-	color = new Color( a, b, c );
+    public ColorButton( int r, int g, int b ) {
+	color = new Color( r, g, b );
 	setBackground(color);
+    }
+
+    public Color getColor() {
+	return color;
+    }
+
+    public void actionPerformed(ActionEvent e) {
     }
 
 }

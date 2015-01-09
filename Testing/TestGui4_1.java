@@ -1,5 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.CardLayout;  
+import java.awt.Dimension;  
+import java.awt.event.ActionEvent;  
+import java.awt.event.ActionListener;  
+import java.awt.image.BufferedImage;  
+import java.io.IOException;  
+import java.net.MalformedURLException;  
+import java.net.URL;  
+  
+import javax.imageio.ImageIO;  
+import javax.swing.ImageIcon;  
+import javax.swing.JButton;  
+import javax.swing.JFrame;  
+import javax.swing.JLabel;  
+import javax.swing.JPanel;  
+import javax.swing.JComponent;  
 
 public class TestGui4_1 {
 
@@ -10,6 +26,9 @@ public class TestGui4_1 {
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
+    private static final String IMAGE_ADDR = "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/" + "Schnepfenfliege_Rhagio_scolopaceus2.jpg/250px-Schnepfenfliege_Rhagio_scolopaceus2.jpg"; 
+    private static final String IMAGE_PANEL = "Image Panel";  
+    private static final String IMAGE_PATH = "1.jpg";
 
     /*
     public void actionPerformed(ActionEvent e) {
@@ -73,7 +92,27 @@ public class TestGui4_1 {
 	c.gridy = 1;
 	panel2.add(Drawbox, c);
 
-    }
+	BufferedImage image = null;  
+	try  
+	    {  
+		image = ImageIO.read(new URL(IMAGE_ADDR));  
+	    }  
+	catch (MalformedURLException e)  
+	    {  
+		e.printStackTrace();  
+	    }  
+	catch (IOException e)  
+	    {  
+		e.printStackTrace();  
+	    }  
+	if (image != null)  
+	    {  
+		canvas.add(new JLabel(new ImageIcon(image)));  
+	    }  
+
+	frame.getContentPane().add(new UploadPics().getComponent()); 
+	frame.pack(); 
+    } 
 
     public static void main(String[] args) {
 	TestGui4_1 T = new TestGui4_1();

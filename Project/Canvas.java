@@ -27,12 +27,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	if (opt.equals("Line")) {
 		this.startDrawing(new Line(startX,startY,
 					   e.getX(),e.getY(),
-					   Color.c));
+					   c));
 	    }
 	else if (opt.equals("Freehand")) {
 		this.addLine(new Line(oldX, oldY,
 				      e.getX(),e.getY(),
-				      Color.c));
+				      c));
 		oldX = e.getX();
 		oldY = e.getY();
 	    }
@@ -56,7 +56,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    {
 		this.addLine(new Line(startX,startY,
 				      e.getX(),e.getY(),
-				      Color.c));
+				      c));
 		this.stopDrawing();
 	    }
 	this.update(this.getGraphics());
@@ -66,10 +66,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	this.options = options;
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);
+	c = new Color(0, 0, 0);
     }
 
-    public void setColor( Color color ) {
-	c = new Color( color );
+    public void setLineColor( Color color ) {
+	c = color;
     }
 
     public void startDrawing(Line l) {
@@ -94,12 +95,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     public void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	if (drawing) {
-	    g.setColor(tmpline.c);
+	    g.setColor(c);
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
 	}
 	for (Line l : lines) {
-	    g.setColor(l.c);
+	    g.setColor(c);
 	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	}
     }

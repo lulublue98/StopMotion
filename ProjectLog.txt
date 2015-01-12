@@ -16,6 +16,8 @@ Project Log
 
 1/6/15 -- Worked more on saving a panel as a picture (SC)
 
+1/7/15 -- Created code to upload piture into canvas (SC)
+
 1/11/15 -- got the clear button to work
 
 1/12/15 -- [ Sorry I haven't been updating ] Finished the Canvas, line drawing methods, and ColorButton ( LC )

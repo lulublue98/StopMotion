@@ -11,6 +11,7 @@ public class Gui implements ActionListener {
 
     private JFrame frame;
     private JButton clear;
+    private JButton undo;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel;
     private CheckboxGroup options;
@@ -93,7 +94,7 @@ public class Gui implements ActionListener {
 	c6 = new ColorButton(0, 0, 0);
 	c6.addCanvas( canvas );
 	c6.addMouseListener(c6);
-	c7 = new ColorButton(200, 200, 200);
+	c7 = new ColorButton(220, 220, 200);
 	c7.addCanvas( canvas );
 	c7.addMouseListener(c7);
 	c8 = new ColorButton(0, 0, 0);
@@ -121,8 +122,6 @@ public class Gui implements ActionListener {
 	ColorPanel.add(c7, g);
 	g.gridx = 7;
 	ColorPanel.add(c8, g);
-	g.gridx = 8;
-	ColorPanel.add(c9, g);
 
 	f.gridy = 2;
 	toolbox.add(ColorPanel, f);

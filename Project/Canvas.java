@@ -92,6 +92,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	lines.add(l);
     }
 
+    public void removeLine() {
+	lines.remove(lines.size()-1);
+    }
+
     public void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	if (drawing) {

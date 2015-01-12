@@ -18,7 +18,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     private boolean enabled = true;
     private CheckboxGroup options;
 
-    public void mouseMoved(MouseEvent e){
+    public void mouseMoved(MouseEvent e) {
     }
 
     public void mouseDragged(MouseEvent e) {

@@ -20,7 +20,7 @@ public class ColorButton extends JPanel implements ActionListener {
 	return color;
     }
 
-    public void actionPerformed(ActionEvent e) {
+    public void addActionPerformed(Gui g) {
     }
 
 }

@@ -36,7 +36,7 @@ public class Gui implements ActionListener {
 	    Color tempcolor = new Color(0, 0, 0);
 	    tempcolor = c1.getColor();
 	    canvas.setLineColor( tempcolor );
-	} 
+	}
     }
 
     public Gui() {
@@ -55,6 +55,7 @@ public class Gui implements ActionListener {
 	frame.getContentPane().add(header, BorderLayout.NORTH);
 
 	clear = new JButton("Clear");
+	clear.addActionListener(this);
 	header.add(clear);
 	
 	canvas = new Canvas(options);

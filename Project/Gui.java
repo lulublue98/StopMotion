@@ -26,16 +26,11 @@ public class Gui implements ActionListener {
     private ColorButton c7;
     private ColorButton c8;
     private ColorButton c9;
-    private ColorButton c10;
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
-	} else if ( e.getSource() == c1 ) {
-	    Color tempcolor = new Color(0, 0, 0);
-	    tempcolor = c1.getColor();
-	    canvas.setLineColor( tempcolor );
 	}
     }
 
@@ -45,7 +40,7 @@ public class Gui implements ActionListener {
 	Linebox = new Checkbox("Line",options,true);
 	Drawbox = new Checkbox("Freehand",options,true);	
 
-	frame = new JFrame("Gui");
+	frame = new JFrame("StopMotion");
 	frame.setSize(1000,700);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,29 +76,32 @@ public class Gui implements ActionListener {
 	ColorPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
 	c1 = new ColorButton(10, 100, 255);
-	c2 = new ColorButton(255, 190, 190);
+	c1.addCanvas( canvas );
+	c1.addMouseListener(c1);
+	c2 = new ColorButton(255, 150, 150);
+	c2.addCanvas( canvas );
+	c2.addMouseListener(c2);
 	c3 = new ColorButton(100, 200, 50);
-	/*
+	c3.addCanvas( canvas );
+	c3.addMouseListener(c3);
 	c4 = new ColorButton(0, 0, 0);
+	c4.addCanvas( canvas );
+	c4.addMouseListener(c4);
 	c5 = new ColorButton(0, 0, 0);
+	c5.addCanvas( canvas );
+	c5.addMouseListener(c5);
 	c6 = new ColorButton(0, 0, 0);
-	c7 = new ColorButton(0, 0, 0);
+	c6.addCanvas( canvas );
+	c6.addMouseListener(c6);
+	c7 = new ColorButton(200, 200, 200);
+	c7.addCanvas( canvas );
+	c7.addMouseListener(c7);
 	c8 = new ColorButton(0, 0, 0);
+	c8.addCanvas( canvas );
+	c8.addMouseListener(c8);
 	c9 = new ColorButton(0, 0, 0);
-	c10 = new ColorButton(0, 0, 0);
-	*/
-	c1.addActionListener(this);
-	c2.addActionListener(this);
-	c3.addActionListener(this);
-	/*
-	c4.addActionListener(this);
-	c5.addActionListener(this);
-	c6.addActionListener(this);
-	c7.addActionListener(this);
-	c8.addActionListener(this);
-	c9.addActionListener(this);
-	c10.addActionListener(this);
-	*/
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c9);
 
 	GridBagConstraints g = new GridBagConstraints();
 	g.gridx = 0;
@@ -113,6 +111,18 @@ public class Gui implements ActionListener {
 	ColorPanel.add(c2, g);
 	g.gridx = 2;
 	ColorPanel.add(c3, g);
+	g.gridx = 3;
+	ColorPanel.add(c4, g);
+	g.gridx = 4;
+	ColorPanel.add(c5, g);
+	g.gridx = 5;
+	ColorPanel.add(c6, g);
+	g.gridx = 6;
+	ColorPanel.add(c7, g);
+	g.gridx = 7;
+	ColorPanel.add(c8, g);
+	g.gridx = 8;
+	ColorPanel.add(c9, g);
 
 	f.gridy = 2;
 	toolbox.add(ColorPanel, f);

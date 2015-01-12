@@ -25,12 +25,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	String opt = options.getSelectedCheckbox().getLabel();
 	System.out.println(opt);
 	if (opt.equals("Line")) {
-		this.startDrawing(new Line(startX,startY,
+	    this.startDrawing(new Line(startX,startY,
 					   e.getX(),e.getY(),
 					   c));
-	    }
+	}
 	else if (opt.equals("Freehand")) {
-		this.addLine(new Line(oldX, oldY,
+	    this.addLine(new Line(oldX, oldY,
 				      e.getX(),e.getY(),
 				      c));
 		oldX = e.getX();
@@ -100,7 +100,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 		       tmpline.x1,tmpline.y1);
 	}
 	for (Line l : lines) {
-	    g.setColor(c);
+	    g.setColor(l.getColor());
 	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	}
     }

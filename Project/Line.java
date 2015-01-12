@@ -18,4 +18,8 @@ public class Line {
 	this.c = c;
     }
 
+    public Color getColor() {
+	return c;
+    }
+
 }

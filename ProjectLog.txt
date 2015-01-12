@@ -15,3 +15,7 @@ Project Log
 1/5/15 -- Worked on capturing the panel and saving it as a picture (SC)
 
 1/6/15 -- Worked more on saving a panel as a picture (SC)
+
+1/11/15 -- got the clear button to work
+
+1/12/15 -- [ Sorry I haven't been updating ] Finished the Canvas, line drawing methods, and ColorButton ( LC )

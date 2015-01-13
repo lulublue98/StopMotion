@@ -91,7 +91,7 @@ public class TestGui4_1 {
 	panel2.add(Linebox, c);
 	c.gridy = 1;
 	panel2.add(Drawbox, c);
-	/*
+
 	BufferedImage image = null;  
 	try  
 	    {  
@@ -113,7 +113,7 @@ public class TestGui4_1 {
 	frame.getContentPane().add(new UploadPics().getComponent()); 
 	frame.pack(); 
     } 
-	*/
+
 
 	/*
 	JFrame f = new JFrame("stackoverflow") { 

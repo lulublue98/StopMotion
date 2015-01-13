@@ -7,6 +7,13 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
 public class Gui implements ActionListener {
 
     private JFrame frame;
@@ -132,6 +139,9 @@ public class Gui implements ActionListener {
 
 	f.gridy = 4;
 	toolbox.add(ColorPanel, f);
+
+	BufferedImage bi = ScreenImage.createImage(ColorPanel);
+	ScreenImage.writeImage(bi, "panel.png");
 
     }
 

@@ -32,6 +32,9 @@ public class Gui implements ActionListener {
 	if ( e.getSource() == clear ) {
 	    canvas.clear();
 	    canvas.paintComponent(canvas.getGraphics());
+	} else if ( e.getSource() == undo ) {
+	    canvas.removeLine();
+	    canvas.paintComponent(canvas.getGraphics());
 	}
     }
 
@@ -49,10 +52,6 @@ public class Gui implements ActionListener {
 	header = new JPanel(new GridBagLayout());
 	header.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
-
-	clear = new JButton("Clear");
-	clear.addActionListener(this);
-	header.add(clear);
 	
 	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
@@ -65,12 +64,20 @@ public class Gui implements ActionListener {
 	toolbox.setBorder(BorderFactory.createLineBorder(Color.red, 5));
 	
 	GridBagConstraints f = new GridBagConstraints();
-	f.insets = new Insets(40,40,70,70);
+	f.insets = new Insets(10,10,50,50);
 	f.gridx = 0;
 	f.gridy = 0;
 	toolbox.add(Linebox, f);
 	f.gridy = 1;
 	toolbox.add(Drawbox, f);
+	f.gridy = 2;
+	clear = new JButton("Clear");
+	clear.addActionListener(this);
+	toolbox.add(clear, f);
+	f.gridy = 3;
+	undo = new JButton("Undo");
+	undo.addActionListener(this);
+	toolbox.add(undo, f);
 
 	ColorPanel = new JPanel();
 	ColorPanel.setPreferredSize(new Dimension(72,72));
@@ -123,7 +130,7 @@ public class Gui implements ActionListener {
 	g.gridx = 7;
 	ColorPanel.add(c8, g);
 
-	f.gridy = 2;
+	f.gridy = 4;
 	toolbox.add(ColorPanel, f);
 
     }

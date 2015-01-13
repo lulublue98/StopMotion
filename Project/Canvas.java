@@ -23,7 +23,6 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
-	System.out.println(opt);
 	if (opt.equals("Line")) {
 	    this.startDrawing(new Line(startX,startY,
 					   e.getX(),e.getY(),
@@ -94,6 +93,8 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
     public void removeLine() {
 	lines.remove(lines.size()-1);
+	drawing=false;
+	this.update(this.getGraphics());
     }
 
     public void paintComponent(Graphics g) {

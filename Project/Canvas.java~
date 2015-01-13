@@ -13,25 +13,26 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
+    private Color c;
     private boolean drawing = false;
     private boolean enabled = true;
     private CheckboxGroup options;
 
-    public void mouseMoved(MouseEvent e){
+    public void mouseMoved(MouseEvent e) {
     }
 
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
 	System.out.println(opt);
-	if (opt.equals("Line") || opt.equals("Node") || opt.equals("AutoNode")) {
-		this.startDrawing(new Line(startX,startY,
+	if (opt.equals("Line")) {
+	    this.startDrawing(new Line(startX,startY,
 					   e.getX(),e.getY(),
-					   Color.blue));
-	    }
-	else if (opt.equals("Draw")) {
-		this.addLine(new Line(oldX, oldY,
+					   c));
+	}
+	else if (opt.equals("Freehand")) {
+	    this.addLine(new Line(oldX, oldY,
 				      e.getX(),e.getY(),
-				      Color.green));
+				      c));
 		oldX = e.getX();
 		oldY = e.getY();
 	    }
@@ -55,7 +56,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    {
 		this.addLine(new Line(startX,startY,
 				      e.getX(),e.getY(),
-				      Color.red));
+				      c));
 		this.stopDrawing();
 	    }
 	this.update(this.getGraphics());
@@ -65,8 +66,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	this.options = options;
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);
+	c = new Color(0, 0, 0);
     }
 
+    public void setLineColor( Color color ) {
+	c = color;
+    }
 
     public void startDrawing(Line l) {
 	drawing = true;
@@ -87,15 +92,19 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	lines.add(l);
     }
 
+    public void removeLine() {
+	lines.remove(lines.size()-1);
+    }
+
     public void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	if (drawing) {
-	    g.setColor(tmpline.c);
+	    g.setColor(c);
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
 	}
 	for (Line l : lines) {
-	    g.setColor(l.c);
+	    g.setColor(l.getColor());
 	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	}
     }

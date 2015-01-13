@@ -10,8 +10,7 @@ import javax.imageio.*;
 public class Gui implements ActionListener {
 
     private JFrame frame;
-    private JButton clear;
-    private JButton undo;
+    private JButton clear, undo, save;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel;
     private CheckboxGroup options;
@@ -27,6 +26,13 @@ public class Gui implements ActionListener {
     private ColorButton c7;
     private ColorButton c8;
     private ColorButton c9;
+    private ColorButton c10;
+    private ColorButton c11;
+    private ColorButton c12;
+    private ColorButton c13;
+    private ColorButton c14;
+    private ColorButton c15;
+    private ColorButton c16;
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
@@ -35,6 +41,8 @@ public class Gui implements ActionListener {
 	} else if ( e.getSource() == undo ) {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
+	} else if ( e.getSource() == save ) {
+	    canvas.saveImage(canvas);
 	}
     }
 
@@ -53,6 +61,10 @@ public class Gui implements ActionListener {
 	header.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
 	
+	save = new JButton("Save");
+	save.addActionListener(this);
+	header.add(save);
+
 	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
@@ -67,17 +79,18 @@ public class Gui implements ActionListener {
 	f.insets = new Insets(10,10,50,50);
 	f.gridx = 0;
 	f.gridy = 0;
-	toolbox.add(Linebox, f);
-	f.gridy = 1;
-	toolbox.add(Drawbox, f);
-	f.gridy = 2;
 	clear = new JButton("Clear");
 	clear.addActionListener(this);
 	toolbox.add(clear, f);
-	f.gridy = 3;
+	f.gridx = 1;
 	undo = new JButton("Undo");
 	undo.addActionListener(this);
 	toolbox.add(undo, f);
+	f.gridy = 1;
+	f.gridx = 0;
+	toolbox.add(Linebox, f);
+	f.gridx = 1;
+	toolbox.add(Drawbox, f);
 
 	ColorPanel = new JPanel();
 	ColorPanel.setPreferredSize(new Dimension(72,72));
@@ -110,6 +123,27 @@ public class Gui implements ActionListener {
 	c9 = new ColorButton(0, 0, 0);
 	c9.addCanvas( canvas );
 	c9.addMouseListener(c9);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c10);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c11);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c12);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c13);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c14);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c15);
+	c9 = new ColorButton(0, 0, 0);
+	c9.addCanvas( canvas );
+	c9.addMouseListener(c16);
 
 	GridBagConstraints g = new GridBagConstraints();
 	g.gridx = 0;
@@ -130,7 +164,8 @@ public class Gui implements ActionListener {
 	g.gridx = 7;
 	ColorPanel.add(c8, g);
 
-	f.gridy = 4;
+	f.gridy = 2;
+	f.gridx = 0;
 	toolbox.add(ColorPanel, f);
 
     }

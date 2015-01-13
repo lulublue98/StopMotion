@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;  
 import java.net.MalformedURLException;  
 import java.net.URL;  
+import java.awt.event.*;
   
 import javax.imageio.ImageIO;  
 import javax.swing.ImageIcon;  
@@ -26,6 +27,7 @@ public class TestGui4_1 {
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
+    private Image backgroundImage;
     private static final String IMAGE_ADDR = "http://www.slate.com/content/dam/slate/blogs/the_slatest/2014/05/09/amazon_white_background_patent_online_sales_giant_files_quesitonable_claim/screen_shot_20140509_at_4.01.21_pm.png.CROP.promo-medium2.01.21_pm.png"; 
     private static final String IMAGE_PANEL = "Image Panel";  
     private static final String IMAGE_PATH = "1.jpg";
@@ -112,7 +114,6 @@ public class TestGui4_1 {
 
 	frame.getContentPane().add(new UploadPics().getComponent()); 
 	frame.pack(); 
-    } 
 
 
 	/*
@@ -123,6 +124,9 @@ public class TestGui4_1 {
 	    }
 
 	*/
+
+    }
+
     public static void main(String[] args) {
 	TestGui4_1 T = new TestGui4_1();
     }

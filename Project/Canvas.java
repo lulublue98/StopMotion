@@ -110,15 +110,21 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	}
     }
 
-    public void saveImage(Canvas panel) {
-	BufferedImage img = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_RGB);
-	panel.paint(img.getGraphics());
-	try {
-	    ImageIO.write(img, "png", new File("E://Screen.png"));
-	    System.out.println("canvas saved as image");
-	} catch (Exception e) {
-	    System.out.println("canvas not saved" + e.getMessage());
-	}
+    public void saveImage(Canvas panel, String x) {
+	int w = panel.getWidth();  
+        int h = panel.getHeight();  
+        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);  
+        Graphics2D g2 = bi.createGraphics();  
+        panel.paint(g2);  
+        g2.dispose();  
+        try  
+	    {  
+		ImageIO.write(bi, "jpg", new File(x + ".jpg"));  
+	    }  
+        catch(IOException ioe)  
+	    {  
+		System.out.println("Panel write help: " + ioe.getMessage());  
+	    }  
     }
 
 }

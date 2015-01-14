@@ -17,8 +17,6 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     private boolean drawing = false;
     private boolean enabled = true;
     private CheckboxGroup options;
-    ImageIcon icon = new ImageIcon(this.getClass().getResource("../pacpix/love.jpg"));
-    Image love = icon.getImage();
 
     public void mouseMoved(MouseEvent e) {
     }
@@ -112,10 +110,21 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	}
     }
 
-    public void paint(Graphics g) {
-	super.paint(g);
-	Graphics2D g2d = (Graphics2D) g;
-	g2d.drawImage(love, 10, 10, null);
+    public void saveImage(Canvas panel, String x) {
+	int w = panel.getWidth();  
+        int h = panel.getHeight();  
+        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);  
+        Graphics2D g2 = bi.createGraphics();  
+        panel.paint(g2);  
+        g2.dispose();  
+        try  
+	    {  
+		ImageIO.write(bi, "jpg", new File(x + ".jpg"));  
+	    }  
+        catch(IOException ioe)  
+	    {  
+		System.out.println("Panel write help: " + ioe.getMessage());  
+	    }  
     }
 
 }

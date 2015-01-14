@@ -42,7 +42,7 @@ public class Gui implements ActionListener {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
 	} else if ( e.getSource() == save ) {
-	    canvas.saveImage(canvas);
+	    canvas.saveImage(canvas, "pic");
 	}
     }
 
@@ -96,7 +96,8 @@ public class Gui implements ActionListener {
 	ColorPanel.setPreferredSize(new Dimension(72,72));
 	ColorPanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 	GreyScale = new JPanel();
-	GreyScale.setPrefferedSize(new Dimension(72, 8));
+	GreyScale.setPreferredSize(new Dimension(24, 72));
+	GreyScale.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
 	c1 = new ColorButton(255, 0, 0);
 	c1.addCanvas( canvas );
@@ -169,6 +170,8 @@ public class Gui implements ActionListener {
 	f.gridy = 2;
 	f.gridx = 0;
 	toolbox.add(ColorPanel, f);
+	f.gridx = 1;
+	toolbox.add(GreyScale, f);
 
     }
 

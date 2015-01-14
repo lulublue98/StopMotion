@@ -16,6 +16,8 @@ public class Gui implements ActionListener {
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
+    private JTextArea text;
+    private String s;
 
     private ColorButton c1;
     private ColorButton c2;
@@ -42,7 +44,7 @@ public class Gui implements ActionListener {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
 	} else if ( e.getSource() == save ) {
-	    canvas.saveImage(canvas);
+	    canvas.saveImage(canvas, s);
 	}
     }
 
@@ -169,6 +171,13 @@ public class Gui implements ActionListener {
 	f.gridy = 2;
 	f.gridx = 0;
 	toolbox.add(ColorPanel, f);
+
+	text = new JTextArea();
+	text.setColumns(40);
+	text.setRows(10);
+	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
+	header.add(text);
+	s = text.getText();
 
     }
 

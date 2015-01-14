@@ -22,7 +22,7 @@ public class TestGui4_1 {
 
     private JFrame frame;
     private JButton clear;
-    private TestCanvas canvas;
+    private Canvas canvas;
     private JPanel panel, panel2;
     private CheckboxGroup options;
     private Checkbox Linebox;
@@ -73,7 +73,7 @@ public class TestGui4_1 {
 	panel.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(panel, BorderLayout.NORTH);
 	
-	canvas = new TestCanvas(options);
+	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 5));

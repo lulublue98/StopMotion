@@ -1,51 +1,42 @@
 import java.io.*;
 import java.util.*;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.GradientPaint;
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Canvas extends JPanel implements MouseListener, MouseMotionListener {
+
     private ArrayList<Line> lines = new ArrayList<Line>();
     private Line tmpline;
-    private boolean drawing=false;
     private int startX,startY;
     private int oldX, oldY;
+    private Color c;
+    private boolean drawing = false;
     private boolean enabled = true;
     private CheckboxGroup options;
 
     public void mouseMoved(MouseEvent e) {
     }
-    
+
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
-	System.out.println(opt);
-	if (opt.equals("Line") || opt.equals("Node") || opt.equals("AutoNode")) {
+	if (opt.equals("Line")) {
 	    this.startDrawing(new Line(startX,startY,
-				       e.getX(),e.getY(),
-				       Color.blue));
+					   e.getX(),e.getY(),
+					   c));
 	}
-	else if (opt.equals("Draw")) {
+	else if (opt.equals("Freehand")) {
 	    this.addLine(new Line(oldX, oldY,
-				  e.getX(),e.getY(),
-				  Color.green));
-	    oldX = e.getX();
-	    oldY = e.getY();
-	}
+				      e.getX(),e.getY(),
+				      c));
+		oldX = e.getX();
+		oldY = e.getY();
+	    }
 	this.update(this.getGraphics());
     }
-
     public void mouseEntered(MouseEvent e) {
     }
     public void mouseExited(MouseEvent e) {
@@ -64,22 +55,21 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    {
 		this.addLine(new Line(startX,startY,
 				      e.getX(),e.getY(),
-				      Color.red));
+				      c));
 		this.stopDrawing();
 	    }
 	this.update(this.getGraphics());
     }
-    
+
     public Canvas(CheckboxGroup options) {
 	this.options = options;
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);
+	c = new Color(0, 0, 0);
     }
 
-    public void clear() {
-	lines = new ArrayList<Line>();
-	drawing=false;
-	this.update(this.getGraphics());
+    public void setLineColor( Color color ) {
+	c = color;
     }
 
     public void startDrawing(Line l) {
@@ -91,37 +81,78 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	drawing=false;
     }
 
-    public Dimension getPreferredSize() {
-	return new Dimension(300,300);
+    public void clear() {
+	lines = new ArrayList<Line>();
+	drawing=false;
+	this.update(this.getGraphics());
     }
 
     public void addLine(Line l) {
 	lines.add(l);
     }
-   
+
+    public void removeLine() {
+	lines.remove(lines.size()-1);
+	drawing=false;
+	this.update(this.getGraphics());
+    }
+
     public void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	if (drawing) {
-	    g.setColor(tmpline.c);
+	    g.setColor(c);
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
+	    pause(5);
 	}
-	for (Line l : lines)
-	    {
-		g.setColor(l.c);
-		g.drawLine(l.x0,l.y0,l.x1,l.y1);
-	    }
+	for (Line l : lines) {
+	    g.setColor(l.getColor());
+	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
+	    pause(5);
+	}
     }
 
-    public void Picture(ActionEvent e){
-	try {
-	    int width = 600, height = 500;
-	    BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-	    Graphics2D ig2 = bi.createGraphics();
-	    ImageIO.write(bi, "PNG", new File("c:\\TestFile.PNG"));
-	} catch (IOException ie) {
-	    ie.printStackTrace();
+   public static void pause(int n) {
+       try {
+	   Thread.sleep(n);
+	   } catch (Exception e) {}
 	}
+
+    public void saveImage(Canvas panel, String x) {
+	int w = panel.getWidth();  
+        int h = panel.getHeight();  
+        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);  
+        Graphics2D g2 = bi.createGraphics();  
+        panel.paint(g2);  
+        g2.dispose();  
+        try  
+	    {  
+		ImageIO.write(bi, "jpg", new File(x + ".jpg"));  
+	    }  
+        catch(IOException ioe)  
+	    {  
+		System.out.println("Panel write help: " + ioe.getMessage());  
+	    }  
+    }
+
+    private Image img;
+
+    public ImagePanel(String img) {
+	this(new ImageIcon(img).getImage();
+    }
+
+    public ImagePanel(Image img) {
+	this.img = img;
+	Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+	setPreferredSize(size);
+	setMinimumSize(size);
+	setMaximumSize(size);
+	setSize(size);
+	setLayout(null);
+    }
+
+    public void paintComponent(Graphics g) {
+	g.drawImage(img, 0, 0, null);
     }
 
 

@@ -33,6 +33,10 @@ public class Gui implements ActionListener {
     private ColorButton c14;
     private ColorButton c15;
     private ColorButton c16;
+    private ColorButton gr1;
+    private ColorButton gr2;
+    private ColorButton gr3;
+    private ColorButton gr4;
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
@@ -147,6 +151,18 @@ public class Gui implements ActionListener {
 	c16 = new ColorButton(0, 0, 0);
 	c16.addCanvas( canvas );
 	c16.addMouseListener(c16);
+	gr1 = new ColorButton(0, 0, 0);
+	gr1.addCanvas( canvas );
+	gr1.addMouseListener(c16);
+	gr2 = new ColorButton(75, 75, 75);
+	gr2.addCanvas( canvas );
+	gr2.addMouseListener(c16);
+	gr3 = new ColorButton(150, 150, 150);
+	gr3.addCanvas( canvas );
+	gr3.addMouseListener(c16);
+	gr4 = new ColorButton(255, 255, 255);
+	gr4.addCanvas( canvas );
+	gr4.addMouseListener(c16);
 
 	GridBagConstraints g = new GridBagConstraints();
 	g.gridx = 0;
@@ -166,6 +182,32 @@ public class Gui implements ActionListener {
 	ColorPanel.add(c7, g);
 	g.gridx = 7;
 	ColorPanel.add(c8, g);
+	g.gridx = 8;
+	ColorPanel.add(c9, g);
+	g.gridx = 9;
+	ColorPanel.add(c10, g);
+	g.gridx = 10;
+	ColorPanel.add(c11, g);
+	g.gridx = 11;
+	ColorPanel.add(c12, g);
+	g.gridx = 12;
+	ColorPanel.add(c13, g);
+	g.gridx = 13;
+	ColorPanel.add(c14, g);
+	g.gridx = 14;
+	ColorPanel.add(c15, g);
+	g.gridx = 15;
+	ColorPanel.add(c16, g);
+	GridBagConstraints gr = new GridBagConstraints();
+	gr.gridx = 0;
+	gr.gridy = 0;
+	GreyScale.add(gr1, gr);
+	gr.gridy = 1;
+	GreyScale.add(gr2, gr);
+	gr.gridy = 2;
+	GreyScale.add(gr3, gr);
+	gr.gridy = 3;
+	GreyScale.add(gr4, gr);	
 
 	f.gridy = 2;
 	f.gridx = 0;

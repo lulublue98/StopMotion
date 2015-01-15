@@ -103,20 +103,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    g.setColor(c);
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
-	    pause(5);
 	}
 	for (Line l : lines) {
 	    g.setColor(l.getColor());
 	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
-	    pause(5);
 	}
     }
-
-   public static void pause(int n) {
-       try {
-	   Thread.sleep(n);
-	   } catch (Exception e) {}
-	}
 
     public void saveImage(Canvas panel, String x) {
 	int w = panel.getWidth();  

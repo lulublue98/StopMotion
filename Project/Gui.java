@@ -16,6 +16,8 @@ public class Gui implements ActionListener {
     private CheckboxGroup options;
     private Checkbox Linebox;
     private Checkbox Drawbox;
+    JTextArea text;
+    private String s;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,
@@ -197,6 +199,13 @@ public class Gui implements ActionListener {
 	toolbox.add(ColorPanel, f);
 	f.gridx = 1;
 	toolbox.add(GreyScale, f);
+	
+	text = new JTextArea();
+	text.setColumns(30);
+	text.setRows(10);
+	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
+	header.add(text);
+	s = text.getText();
 
     }
 

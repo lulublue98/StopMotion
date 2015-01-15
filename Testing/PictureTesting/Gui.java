@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 public class Gui implements ActionListener {
 
     private JFrame frame;
-    private JButton clear, undo, save;
+    private JButton clear, undo, save, displayimg;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
@@ -42,10 +42,19 @@ public class Gui implements ActionListener {
 	} else if ( e.getSource() == save ) {
 	    s = text.getText();
 	    canvas.saveImage(canvas, s);
+	} else if (e.getSource() == displayimg ) {
+	    Image img = ImageIO.read(new File("panel.jpg"));
+	    paint(canvas.getGraphics());
+	    //canvas.getGraphics().drawImage()("panel.jpg",10,10,this);
 	}
     }
 
+    public void paint(Graphics g) {
+	g.drawImage(img, 0, 0, null);
+    }
+
     public Gui() {
+
 
 	options = new CheckboxGroup();
 	Linebox = new Checkbox("Line",options,true);
@@ -221,7 +230,7 @@ public class Gui implements ActionListener {
 	frame.setSize(1000,700);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	/*
 	BufferedImage image = null;  
 	try  
 	    {  
@@ -239,10 +248,9 @@ public class Gui implements ActionListener {
 	    {  
 		canvas.add(new JLabel(new ImageIcon(image)));  
 	    }  
-
 	frame.getContentPane().add(new UploadPics().getComponent()); 
 	frame.pack(); 
-
+	*/
     }
 
     public static void main(String[] args) {

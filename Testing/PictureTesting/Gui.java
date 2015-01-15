@@ -7,6 +7,14 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
+import java.awt.image.BufferedImage;  
+import java.io.IOException;  
+import java.net.MalformedURLException;  
+import java.net.URL;  
+import java.awt.event.*;
+import javax.imageio.ImageIO;  
+import javax.swing.ImageIcon;
+
 public class Gui implements ActionListener {
 
     private JFrame frame;
@@ -18,6 +26,7 @@ public class Gui implements ActionListener {
     private Checkbox Drawbox;
     JTextArea text;
     private String s;
+    private static final String IMAGE_ADDR = "screenShot.jpg";
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,
@@ -31,6 +40,7 @@ public class Gui implements ActionListener {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
 	} else if ( e.getSource() == save ) {
+	    s = text.getText();
 	    canvas.saveImage(canvas, s);
 	}
     }
@@ -42,10 +52,11 @@ public class Gui implements ActionListener {
 	Drawbox = new Checkbox("Freehand",options,true);	
 
 	frame = new JFrame("StopMotion");
+	/*
 	frame.setSize(1000,700);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
+	*/
 	header = new JPanel(new GridBagLayout());
 	header.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
@@ -205,7 +216,32 @@ public class Gui implements ActionListener {
 	text.setRows(10);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	header.add(text);
-	s = text.getText();
+	//s = text.getText();
+
+	frame.setSize(1000,700);
+	frame.setVisible(true);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	BufferedImage image = null;  
+	try  
+	    {  
+		image = ImageIO.read(new URL(IMAGE_ADDR));  
+	    }  
+	catch (MalformedURLException e)  
+	    {  
+		e.printStackTrace();  
+	    }  
+	catch (IOException e)  
+	    {  
+		e.printStackTrace();  
+	    }  
+	if (image != null)  
+	    {  
+		canvas.add(new JLabel(new ImageIcon(image)));  
+	    }  
+
+	frame.getContentPane().add(new UploadPics().getComponent()); 
+	frame.pack(); 
 
     }
 

@@ -31,7 +31,8 @@ public class Gui implements ActionListener {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
 	} else if ( e.getSource() == save ) {
-	    canvas.saveImage(canvas, "pic");
+	    s = text.getText();
+	    canvas.saveImage(canvas, s);
 	}
     }
 
@@ -206,7 +207,7 @@ public class Gui implements ActionListener {
 	text.setRows(10);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	header.add(text);
-	s = text.getText();
+	//s = text.getText();
 
 	frame.setSize(1000,700);
 	frame.setVisible(true);

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
+import java.io.File;
 
 public class Canvas extends JPanel implements MouseListener, MouseMotionListener {
 
@@ -135,6 +136,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    }  
     }
 
+    /*
     private Image img;
 
     public ImagePanel(String img) {
@@ -150,10 +152,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	setSize(size);
 	setLayout(null);
     }
-
+    
     public void paintComponent(Graphics g) {
 	g.drawImage(img, 0, 0, null);
     }
-
+	*/
 
 }

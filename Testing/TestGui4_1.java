@@ -94,6 +94,8 @@ public class TestGui4_1 {
 	c.gridy = 1;
 	panel2.add(Drawbox, c);
 
+	paintComponent(canvas);
+	/*
 	BufferedImage image = null;  
 	try  
 	    {  
@@ -114,7 +116,9 @@ public class TestGui4_1 {
 
 	frame.getContentPane().add(new UploadPics().getComponent()); 
 	frame.pack(); 
-
+	*/
+	
+	
 
 	/*
 	JFrame f = new JFrame("stackoverflow") { 
@@ -125,6 +129,11 @@ public class TestGui4_1 {
 
 	*/
 
+    }
+
+    public void paintComponent(Graphics g) {
+	Image img = ImageIO.read(new File("screenShot.jpg"));
+	g.drawImage(img, 0, 0, null);
     }
 
     public static void main(String[] args) {

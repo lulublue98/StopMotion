@@ -17,26 +17,9 @@ public class Gui implements ActionListener {
     private Checkbox Linebox;
     private Checkbox Drawbox;
 
-    private ColorButton c1;
-    private ColorButton c2;
-    private ColorButton c3;
-    private ColorButton c4;
-    private ColorButton c5;
-    private ColorButton c6;
-    private ColorButton c7;
-    private ColorButton c8;
-    private ColorButton c9;
-    private ColorButton c10;
-    private ColorButton c11;
-    private ColorButton c12;
-    private ColorButton c13;
-    private ColorButton c14;
-    private ColorButton c15;
-    private ColorButton c16;
-    private ColorButton gr1;
-    private ColorButton gr2;
-    private ColorButton gr3;
-    private ColorButton gr4;
+    private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
+	c9, c10, c11, c12, c13, c14, c15, c16,
+	gr1, gr2, gr3, gr4;
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {

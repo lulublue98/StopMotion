@@ -31,4 +31,4 @@ Project Log
         -- worked on JText Area (SC)
         
 1/16/15 -- got textArea to show up in GUI and also finalized capturing the panel as an image. You can now specify 
-           the names of the different picture files inside the GUI.
+           the names of the different picture files inside the GUI. (SC)

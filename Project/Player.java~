@@ -26,8 +26,6 @@ public class Player implements ActionListener {
     private static final String IMAGE_ADDR;
     private static final String IMAGE_PANEL;  
     private static final String IMAGE_PATH;
-    private CardLayout layout;
-    private JButton start;
 
     public void actionPerformed(ActionEvent e){
     }
@@ -48,23 +46,14 @@ public class Player implements ActionListener {
 	frame.getContentPane().add(screen, BorderLayout.WEST);
 	screen.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	
-	private JPanel createBtnPanel() {  
-	    JButton startBtn = new JButton("Start");  
-	    startBtn.addActionListener(new StartBtnListener());      
-	    JPanel buttonPanel = new JPanel();  
-	    buttonPanel.add(startBtn);  
-	    return buttonPanel;  
-	}
-	  
 	toolbox = new JPanel(new GridBagLayout());
 	toolbox.setPreferredSize(new Dimension(400,200));
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);
 	toolbox.setBorder(BorderFactory.createLineBorder(Color.red, 5));
 
-	IMAGE_ADDR = "rainbow.jpg";
-	IMAGE_PANEL = "Image Panel";
-	IMAGE_PATH = ".jpg";
-	layout = new CardLayout();
+	IMAGE_ADDR
+	IMAGE_PANEL  
+	IMAGE_PATH
 
 	BufferedImage image = null;  
 	try  
@@ -89,13 +78,8 @@ public class Player implements ActionListener {
 
     }
 
-   public static void main(String[] args) {  
-       java.awt.EventQueue.invokeLater(new Runnable() {  
-	       public void run() {  
-		   createAndShowUI();  
-	       }  
-	   });
-       
-   }
+    public static void main(String[] args) {
+	Player P = new Player();
+    }
 
 }

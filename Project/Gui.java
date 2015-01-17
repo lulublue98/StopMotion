@@ -33,6 +33,7 @@ public class Gui implements ActionListener {
 	} else if ( e.getSource() == save ) {
 	    s = text.getText();
 	    canvas.saveImage(canvas, s);
+	    s = "";
 	}
     }
 
@@ -96,46 +97,46 @@ public class Gui implements ActionListener {
 	c2 = new ColorButton(255, 255, 0);
 	c2.addCanvas( canvas );
 	c2.addMouseListener(c2);
-	c3 = new ColorButton(0, 255, 0);
+	c3 = new ColorButton(0, 102, 0);
 	c3.addCanvas( canvas );
 	c3.addMouseListener(c3);
 	c4 = new ColorButton(0, 0, 255);
 	c4.addCanvas( canvas );
 	c4.addMouseListener(c4);
-	c5 = new ColorButton(255, 100, 100);
+	c5 = new ColorButton(255, 102, 178);
 	c5.addCanvas( canvas );
 	c5.addMouseListener(c5);
-	c6 = new ColorButton(255, 255, 100);
+	c6 = new ColorButton(255, 204, 153);
 	c6.addCanvas( canvas );
 	c6.addMouseListener(c6);
-	c7 = new ColorButton(100, 255, 100);
+	c7 = new ColorButton(0, 255, 0);
 	c7.addCanvas( canvas );
 	c7.addMouseListener(c7);
-	c8 = new ColorButton(100, 100, 255);
+	c8 = new ColorButton(51, 153, 255);
 	c8.addCanvas( canvas );
 	c8.addMouseListener(c8);
-	c9 = new ColorButton(0, 0, 0);
+	c9 = new ColorButton(153, 0, 153);
 	c9.addCanvas( canvas );
 	c9.addMouseListener(c9);
-	c10 = new ColorButton(0, 0, 0);
+	c10 = new ColorButton(255, 128, 0);
 	c10.addCanvas( canvas );
 	c10.addMouseListener(c10);
-	c11 = new ColorButton(0, 0, 0);
+	c11 = new ColorButton(0, 204, 102);
 	c11.addCanvas( canvas );
 	c11.addMouseListener(c11);
-	c12 = new ColorButton(0, 0, 0);
+	c12 = new ColorButton(153, 153, 255);
 	c12.addCanvas( canvas );
 	c12.addMouseListener(c12);
-	c13 = new ColorButton(0, 0, 0);
+	c13 = new ColorButton(76, 0, 153);
 	c13.addCanvas( canvas );
 	c13.addMouseListener(c13);
-	c14 = new ColorButton(0, 0, 0);
+	c14 = new ColorButton(102, 51, 0);
 	c14.addCanvas( canvas );
 	c14.addMouseListener(c14);
-	c15 = new ColorButton(0, 0, 0);
+	c15 = new ColorButton(0, 204, 204);
 	c15.addCanvas( canvas );
 	c15.addMouseListener(c15);
-	c16 = new ColorButton(0, 0, 0);
+	c16 = new ColorButton(153, 51, 255);
 	c16.addCanvas( canvas );
 	c16.addMouseListener(c16);
 	gr1 = new ColorButton(0, 0, 0);
@@ -204,10 +205,9 @@ public class Gui implements ActionListener {
 	
 	text = new JTextArea();
 	text.setColumns(30);
-	text.setRows(10);
+	text.setRows(1);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	header.add(text);
-	//s = text.getText();
 
 	frame.setSize(1000,700);
 	frame.setVisible(true);

@@ -21,7 +21,7 @@ public class UploadPics {
   private static final Dimension MAIN_SIZE = new Dimension(300, 300);  
   private static final String BUTTON_PANEL = "Button Panel";  
   private static final String IMAGE_PANEL = "Image Panel";  
-  private static final String IMAGE_PATH = "1.jpg";  
+  private static final String IMAGE_PATH = ".jpg";  
   private JPanel mainPanel = new JPanel();  
   private CardLayout cardlayout = new CardLayout();  
   
@@ -67,21 +67,17 @@ public class UploadPics {
     return imagePanel;  
   }  
   
-  public JComponent getComponent()  
-  {  
-    return mainPanel;  
+  public JComponent getComponent() {  
+      return mainPanel;  
   }  
     
-  private class StartBtnListener implements ActionListener  
-  {  
-    public void actionPerformed(ActionEvent e)  
-    {  
-      cardlayout.show(mainPanel, IMAGE_PANEL);  
-    }  
-  }  
-  
-  private static void createAndShowUI()  
-  {  
+  private class StartBtnListener implements ActionListener {  
+      public void actionPerformed(ActionEvent e) {  
+	  cardlayout.show(mainPanel, IMAGE_PANEL);   
+      }    
+  }   
+    
+  private static void createAndShowUI() {  
     JFrame frame = new JFrame("Display Image");  
     frame.getContentPane().add(new UploadPics().getComponent());  
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
@@ -90,14 +86,11 @@ public class UploadPics {
     frame.setVisible(true);  
   }  
   
-  public static void main(String[] args)  
-  {  
-    java.awt.EventQueue.invokeLater(new Runnable()  
-    {  
-      public void run()  
-      {  
-        createAndShowUI();  
-      }  
-    });  
+  public static void main(String[] args) {  
+    java.awt.EventQueue.invokeLater(new Runnable() {  
+	    public void run() {  
+		createAndShowUI();  
+	    }  
+	});  
   }  
 }  

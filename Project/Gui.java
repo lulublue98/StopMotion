@@ -14,8 +14,8 @@ public class Gui implements ActionListener {
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
-    private Checkbox Linebox;
-    private Checkbox Drawbox;
+    private Checkbox Linebox, Drawbox, Circlebox;
+    //  private Checkbox Drawbox;
     JTextArea text;
     private String s;
     private JLabel l;
@@ -42,7 +42,8 @@ public class Gui implements ActionListener {
 
 	options = new CheckboxGroup();
 	Linebox = new Checkbox("Line",options,true);
-	Drawbox = new Checkbox("Freehand",options,true);	
+	Drawbox = new Checkbox("Freehand",options,true);
+	Circlebox = new Checkbox("Circle",options,true);
 
 	frame = new JFrame("StopMotion");
 	header = new JPanel(new GridBagLayout());

@@ -22,12 +22,9 @@ public class Player implements ActionListener {
 
     private JFrame frame;
     private JPanel header, screen, toolbox;
-    private Image backgroundImage;
-    private String IMAGE_ADDR;
-    private String IMAGE_PANEL;  
-    private String IMAGE_PATH;
-    private CardLayout layout;
-    private JButton start;
+    private ImageIcon image;
+    private JLabel label;
+
 
     public void actionPerformed(ActionEvent e){
     }
@@ -47,55 +44,24 @@ public class Player implements ActionListener {
 	screen.setPreferredSize(new Dimension(600,500));
 	frame.getContentPane().add(screen, BorderLayout.WEST);
 	screen.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
-	
-	public JPanel createBtnPanel() {  
-	    JButton startBtn = new JButton("Start");  
-	    startBtn.addActionListener(new StartBtnListener());      
-	    JPanel buttonPanel = new JPanel();  
-	    buttonPanel.add(startBtn);  
-	    return buttonPanel;  
-	}
+
+	image = new ImageIcon("rainbow.jpg");
+	label = new JLabel(image);
+	screen.add(label);
 	  
 	toolbox = new JPanel(new GridBagLayout());
 	toolbox.setPreferredSize(new Dimension(400,200));
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);
 	toolbox.setBorder(BorderFactory.createLineBorder(Color.red, 5));
 
-	IMAGE_ADDR = "rainbow.jpg";
-	IMAGE_PANEL = "Image Panel";
-	IMAGE_PATH = ".jpg";
-	layout = new CardLayout();
-
-	BufferedImage image = null;  
-	try  
-	    {  
-		image = ImageIO.read(new URL(IMAGE_ADDR));  
-	    }  
-	catch (MalformedURLException e)  
-	    {  
-		e.printStackTrace();  
-	    }  
-	catch (IOException e)  
-	    {  
-		e.printStackTrace();  
-	    }  
-	if (image != null)  
-	    {  
-		canvas.add(new JLabel(new ImageIcon(image)));  
-	    }  
-
-	frame.getContentPane().add(new UploadPics().getComponent()); 
-	frame.pack(); 
+	frame.setSize(1000,700);
+	frame.setVisible(true);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 
-   public static void main(String[] args) {  
-       java.awt.EventQueue.invokeLater(new Runnable() {  
-	       public void run() {  
-		   createAndShowUI();  
-	       }  
-	   });
-       
+   public static void main(String[] args) {
+       Player P = new Player();
    }
 
 }

@@ -34,7 +34,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 				      c));
 		oldX = e.getX();
 		oldY = e.getY();
-	    }
+	}
 	this.update(this.getGraphics());
     }
     public void mouseEntered(MouseEvent e) {

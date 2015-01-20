@@ -45,11 +45,6 @@ public class Gui implements ActionListener {
 	Drawbox = new Checkbox("Freehand",options,true);	
 
 	frame = new JFrame("StopMotion");
-	/*
-	frame.setSize(1000,700);
-	frame.setVisible(true);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	*/
 	header = new JPanel(new GridBagLayout());
 	header.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(header, BorderLayout.NORTH);

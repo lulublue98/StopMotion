@@ -33,3 +33,7 @@ Project Log
 1/16/15 -- got textArea to show up in GUI and also finalized capturing the panel as an image. You can now specify 
            the names of the different picture files inside the GUI. (SC)
         -- continued to work on uploading pictured to the canvas, made some headway (LC)
+        -- worked more on uploading picture to canvas but ran into some difficulties (SC)
+
+1/20/15 -- figure out how to upload picture to canvas (LC)
+        -- started working on code for creating circles in the gui (SC)

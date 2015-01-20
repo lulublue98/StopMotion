@@ -18,6 +18,7 @@ public class Gui implements ActionListener {
     private Checkbox Drawbox;
     JTextArea text;
     private String s;
+    private JLabel l;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,
@@ -56,6 +57,9 @@ public class Gui implements ActionListener {
 	save = new JButton("Save");
 	save.addActionListener(this);
 	header.add(save);
+
+	l = new JLabel("Enter filename:");
+	header.add(l);
 
 	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);

@@ -23,9 +23,9 @@ public class Player implements ActionListener {
     private JFrame frame;
     private JPanel header, screen, toolbox;
     private Image backgroundImage;
-    private static final String IMAGE_ADDR;
-    private static final String IMAGE_PANEL;  
-    private static final String IMAGE_PATH;
+    private String IMAGE_ADDR;
+    private String IMAGE_PANEL;  
+    private String IMAGE_PATH;
     private CardLayout layout;
     private JButton start;
 
@@ -48,7 +48,7 @@ public class Player implements ActionListener {
 	frame.getContentPane().add(screen, BorderLayout.WEST);
 	screen.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	
-	private JPanel createBtnPanel() {  
+	public JPanel createBtnPanel() {  
 	    JButton startBtn = new JButton("Start");  
 	    startBtn.addActionListener(new StartBtnListener());      
 	    JPanel buttonPanel = new JPanel();  

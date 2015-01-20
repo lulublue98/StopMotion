@@ -15,10 +15,11 @@ public class Gui implements ActionListener {
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
     private Checkbox Linebox, Drawbox, Circlebox;
-    //  private Checkbox Drawbox;
     JTextArea text;
     private String s;
     private JLabel l;
+    private ImageIcon image;
+    private JLabel label;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,

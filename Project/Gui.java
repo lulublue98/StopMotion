@@ -54,6 +54,7 @@ public class Gui implements ActionListener {
 	frame = new JFrame("StopMotion");
 	header = new JPanel(new GridBagLayout());
 	header.setPreferredSize(new Dimension(1000,200));
+	header.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
 	
 	GridBagConstraints h = new GridBagConstraints();
@@ -89,7 +90,6 @@ public class Gui implements ActionListener {
 	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
-	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	label = new JLabel();
 	canvas.add(label);
 
@@ -175,16 +175,16 @@ public class Gui implements ActionListener {
 	c16.addMouseListener(c16);
 	gr1 = new ColorButton(0, 0, 0);
 	gr1.addCanvas( canvas );
-	gr1.addMouseListener(c16);
+	gr1.addMouseListener(gr1);
 	gr2 = new ColorButton(75, 75, 75);
 	gr2.addCanvas( canvas );
-	gr2.addMouseListener(c16);
+	gr2.addMouseListener(gr2);
 	gr3 = new ColorButton(150, 150, 150);
 	gr3.addCanvas( canvas );
-	gr3.addMouseListener(c16);
+	gr3.addMouseListener(gr3);
 	gr4 = new ColorButton(255, 255, 255);
 	gr4.addCanvas( canvas );
-	gr4.addMouseListener(c16);
+	gr4.addMouseListener(gr4);
 
 	GridBagConstraints g = new GridBagConstraints();
 	g.gridx = 0;

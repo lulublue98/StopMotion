@@ -39,3 +39,6 @@ Project Log
         -- started working on code for creating circles in the gui (SC)
         -- continued work on project asthetics (LC)
         -- continued work on Player.java and uploading backgrounds to Gui.java
+        
+1/21/15 -- Uploading works!!! (LC)
+        -- Player is almost done, the play method works (LC)

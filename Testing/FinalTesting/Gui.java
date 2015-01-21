@@ -114,6 +114,8 @@ public class Gui implements ActionListener {
 	toolbox.add(Linebox, f);
 	f.gridx = 1;
 	toolbox.add(Drawbox, f);
+	f.gridx = 2;
+	toolbox.add(Circlebox, f);
 
 	ColorPanel = new JPanel();
 	ColorPanel.setPreferredSize(new Dimension(72,72));

@@ -21,7 +21,7 @@ Project Log
 
 1/11/15 -- got the clear button to work (LC)
 
-1/12/15 -- Finished the Canvas, line drawing methods, and ColorButton ( LC )
+1/12/15 -- Finished the Canvas, line drawing methods, and ColorButton (LC)
 
 1/13/15 -- Figured out how to save a JPanel as a jpeg file (SC)
 

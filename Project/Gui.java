@@ -10,14 +10,14 @@ import javax.imageio.*;
 public class Gui implements ActionListener {
 
     private JFrame frame;
-    private JButton clear, undo, save;
+    private JButton clear, undo, save, upload;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
     private Checkbox Linebox, Drawbox, Circlebox;
-    JTextArea text;
-    private String s;
-    private JLabel l;
+    JTextArea text1, text2;
+    private String s, f;
+    private JLabel l1, l2;
     private ImageIcon image;
     private JLabel label;
 
@@ -33,9 +33,14 @@ public class Gui implements ActionListener {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
 	} else if ( e.getSource() == save ) {
-	    s = text.getText();
+	    s = text1.getText();
 	    canvas.saveImage(canvas, s);
 	    s = "";
+	} else if ( e.getSource() == upload ) {
+	    f = text2.getText();
+	    image = new ImageIcon( f );
+	    label = new JLabel(image);
+	    canvas.add(label);
 	}
     }
 
@@ -51,12 +56,35 @@ public class Gui implements ActionListener {
 	header.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
 	
+	GridBagConstraints h = new GridBagConstraints();
+	h.gridy = 0;
+	h.gridx = 0;
 	save = new JButton("Save");
 	save.addActionListener(this);
-	header.add(save);
-
-	l = new JLabel("Enter filename:");
-	header.add(l);
+	header.add(save, h);
+	h.gridx = 1;
+	l1 = new JLabel("Enter filename:");
+	header.add(l1, h);	
+	h.gridx = 2;
+	text1 = new JTextArea();
+	text1.setColumns(30);
+	text1.setRows(1);
+	text1.setBorder(BorderFactory.createLineBorder(Color.red,2));
+	header.add(text1, h);
+	h.gridy = 1;
+	h.gridx = 0;
+	upload = new JButton("Upload");
+	upload.addActionListener(this);
+	header.add(upload, h);
+	h.gridx = 1;
+	l2 = new JLabel("Upload a background image:  ");
+	header.add(l2, h);
+	h.gridx = 2;
+	text2 = new JTextArea();
+	text2.setColumns(30);
+	text2.setRows(1);
+	text2.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+	header.add(text2, h);
 
 	canvas = new Canvas(options);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
@@ -203,12 +231,6 @@ public class Gui implements ActionListener {
 	toolbox.add(ColorPanel, f);
 	f.gridx = 1;
 	toolbox.add(GreyScale, f);
-	
-	text = new JTextArea();
-	text.setColumns(30);
-	text.setRows(1);
-	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
-	header.add(text);
 
 	frame.setSize(1000,700);
 	frame.setVisible(true);

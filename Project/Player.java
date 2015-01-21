@@ -22,11 +22,20 @@ public class Player implements ActionListener {
 
     private JFrame frame;
     private JPanel header, screen, toolbox;
-    private ImageIcon image;
+    private JButton upload;
+    private ImageIcon temp;
+    private int numPics;
     private JLabel label;
-
+    private JLabel l;
+    private ImageIcon[] images = new ImageIcon[1000];
+    JTextArea text;
 
     public void actionPerformed(ActionEvent e){
+	if ( e.getSource() == upload ) {
+	    temp = new ImageIcon( text.getText() );
+	    images[numPics] = temp;
+	    numPics = numPics + 1;
+	}
     }
 
     public Player() {
@@ -40,15 +49,27 @@ public class Player implements ActionListener {
 	header.setPreferredSize(new Dimension(1000,200));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
 	
+	GridBagConstraints h = new GridBagConstraints();
+	h.gridy = 0;
+	h.gridx = 0;
+	upload = new JButton("Upload");
+	upload.addActionListener(this);
+	header.add(upload, h);
+	h.gridx = 1;
+	l = new JLabel("  Upload:  ");
+	header.add(l, h);
+	h.gridx = 2;
+	text = new JTextArea();
+	text.setColumns(30);
+	text.setRows(1);
+	text.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+	header.add(text, h);
+
 	screen = new JPanel(new GridBagLayout());
 	screen.setPreferredSize(new Dimension(600,500));
 	frame.getContentPane().add(screen, BorderLayout.WEST);
 	screen.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 
-	image = new ImageIcon("rainbow.jpg");
-	label = new JLabel(image);
-	screen.add(label);
-	  
 	toolbox = new JPanel(new GridBagLayout());
 	toolbox.setPreferredSize(new Dimension(400,200));
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);

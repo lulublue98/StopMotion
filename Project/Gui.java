@@ -18,7 +18,6 @@ public class Gui implements ActionListener {
     JTextArea text1, text2;
     private String s, f;
     private JLabel l1, l2;
-    private ImageIcon image;
     private JLabel label;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
@@ -37,9 +36,10 @@ public class Gui implements ActionListener {
 	    canvas.saveImage(canvas, s);
 	    s = "";
 	} else if ( e.getSource() == upload ) {
-	    f = text2.getText();
-	    image = new ImageIcon( f );
-	    label = new JLabel(image);
+	    f = text2.getText() + ".jpg";
+	    System.out.println(":"+f+":");
+	    ImageIcon image = new ImageIcon( f );
+	    label.setIcon(image);
 	    canvas.add(label);
 	}
     }
@@ -90,7 +90,9 @@ public class Gui implements ActionListener {
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
-	
+	label = new JLabel();
+	canvas.add(label);
+
 	toolbox = new JPanel(new GridBagLayout());
 	toolbox.setPreferredSize(new Dimension(400,200));
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);

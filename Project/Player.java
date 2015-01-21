@@ -22,8 +22,8 @@ public class Player implements ActionListener {
 
     private JFrame frame;
     private JPanel header, screen, toolbox;
-    private JButton upload;
-    private ImageIcon temp;
+    private JButton upload, play;
+    private ImageIcon temp, image;
     private int numPics;
     private JLabel label;
     private JLabel l;
@@ -32,9 +32,24 @@ public class Player implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
 	if ( e.getSource() == upload ) {
-	    temp = new ImageIcon( text.getText() );
+	    temp = new ImageIcon( text.getText() + ".jpg");
 	    images[numPics] = temp;
 	    numPics = numPics + 1;
+	} else if ( e.getSource() == play ) {
+	    play();
+	}
+    }
+
+    public void play() {
+	for (int x=0;x<numPics;x++) {
+	    image = images[x];
+	    label.setIcon(image);
+	    try {
+		Thread.sleep(100);
+	    } 
+	    catch ( Exception e) {
+		System.out.println("Whoops...");
+	    }
 	}
     }
 
@@ -69,11 +84,17 @@ public class Player implements ActionListener {
 	screen.setPreferredSize(new Dimension(600,500));
 	frame.getContentPane().add(screen, BorderLayout.WEST);
 	screen.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
+	label = new JLabel();
+	screen.add(label);
 
 	toolbox = new JPanel(new GridBagLayout());
 	toolbox.setPreferredSize(new Dimension(400,200));
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);
 	toolbox.setBorder(BorderFactory.createLineBorder(Color.red, 5));
+	
+	play = new JButton("Play");
+	play.addActionListener(this);
+	toolbox.add(play);
 
 	frame.setSize(1000,700);
 	frame.setVisible(true);

@@ -38,7 +38,7 @@ Project Log
 1/20/15 -- figure out how to upload picture to canvas (LC)
         -- started working on code for creating circles in the gui (SC)
         -- continued work on project aesthetics (LC)
-        -- continued work on Player.java and uploading backgrounds to Gui.java
+        -- continued work on Player.java and uploading backgrounds to Gui.java (LC)
         
 1/21/15 -- Uploading works!!! (LC)
         -- Player is almost done, the play method kind of works (LC)

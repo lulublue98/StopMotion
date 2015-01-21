@@ -6,7 +6,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
  
-public class TestCircle extends Frame {
+public class drawCircle {
+
+    private void drawCircle(int x, int y, int radius)
+    {
+        drawOval(x - radius, y - radius, radius*2, radius*2);
+    }
+}
+    /*
  
   public void paint(Graphics g) {
      Graphics2D ga = (Graphics2D)g;
@@ -31,3 +38,4 @@ public class TestCircle extends Frame {
       frame.setVisible(true);
    }
 }
+*/

@@ -45,7 +45,7 @@ public class Player implements ActionListener {
 	    image = images[x];
 	    label.setIcon(image);
 	    try {
-		Thread.sleep(100);
+		Thread.sleep(1000);
 	    } 
 	    catch ( Exception e) {
 		System.out.println("Whoops...");

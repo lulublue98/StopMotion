@@ -7,24 +7,16 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-
 public class Circle {
 
-    private int x;
-    private int y;
-    private int width;
-    Ellipse2D.Double circle;
-
+    public int x, y, r;
     public Color c;
-
-    public Circle() {
-	circle = new Ellipse2D.Double(x, y, width, width);
+    
+    public Circle(int a, int b, int radius, Color col) {
+	x = a;
+	y = b; 
+	r = radius;
+	c = col;
     }
 
-    public Color getColor() {
-	return c;
-    }
+}

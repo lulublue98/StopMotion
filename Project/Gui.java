@@ -98,22 +98,25 @@ public class Gui implements ActionListener {
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);
 	toolbox.setBorder(BorderFactory.createLineBorder(Color.red, 5));
 	
-	GridBagConstraints f = new GridBagConstraints();
-	f.insets = new Insets(10,10,50,50);
-	f.gridx = 0;
-	f.gridy = 0;
+	GridBagConstraints t = new GridBagConstraints();
+	t.insets = new Insets(10,10,50,50);
+	t.gridx = 0;
+	t.gridy = 0;
 	clear = new JButton("Clear");
 	clear.addActionListener(this);
-	toolbox.add(clear, f);
-	f.gridx = 1;
+	toolbox.add(clear, t);
+	t.gridx = 1;
 	undo = new JButton("Undo");
 	undo.addActionListener(this);
-	toolbox.add(undo, f);
-	f.gridy = 1;
-	f.gridx = 0;
-	toolbox.add(Linebox, f);
-	f.gridx = 1;
-	toolbox.add(Drawbox, f);
+	toolbox.add(undo, t);
+	t.gridy = 1;
+	t.gridx = 0;
+	toolbox.add(Linebox, t);
+	t.gridx = 1;
+	toolbox.add(Drawbox, t);
+	t.gridy = 2;
+	t.gridx = 0;
+	toolbox.add(Circlebox, t);
 
 	ColorPanel = new JPanel();
 	ColorPanel.setPreferredSize(new Dimension(72,72));
@@ -228,11 +231,11 @@ public class Gui implements ActionListener {
 	gr.gridy = 3;
 	GreyScale.add(gr4, gr);	
 
-	f.gridy = 2;
-	f.gridx = 0;
-	toolbox.add(ColorPanel, f);
-	f.gridx = 1;
-	toolbox.add(GreyScale, f);
+	t.gridy = 3;
+	t.gridx = 0;
+	toolbox.add(ColorPanel, t);
+	t.gridx = 1;
+	toolbox.add(GreyScale, t);
 
 	frame.setSize(1000,700);
 	frame.setVisible(true);

@@ -116,13 +116,13 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
 	}
-	for (Line l : lines) {
-	    g.setColor(l.c);
-	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
-	}
 	for (Circle cir : circles) {
 	    g.setColor(cir.c);
 	    g.fillOval(cir.x,cir.y,cir.r,cir.r);
+	}
+	for (Line l : lines) {
+	    g.setColor(l.c);
+	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	}
     }
 

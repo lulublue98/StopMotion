@@ -42,3 +42,4 @@ Project Log
         
 1/21/15 -- Uploading works!!! (LC)
         -- Player is almost done, the play method kind of works (LC)
+        -- Worked more on circle code. Having difficulty (SC)

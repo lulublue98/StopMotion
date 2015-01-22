@@ -14,7 +14,7 @@ public class Gui implements ActionListener {
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
-    private Checkbox Linebox, Drawbox, Circlebox;
+    private Checkbox Linebox, Drawbox, Circlebox, Rectbox;
     private JComboBox background;
     private Color bgopt;
     JTextArea text1, text2;
@@ -141,6 +141,7 @@ public class Gui implements ActionListener {
 	t.gridy = 2;
 	t.gridx = 0;
 	toolbox.add(Circlebox, t);
+	
 
 	ColorPanel = new JPanel();
 	ColorPanel.setPreferredSize(new Dimension(72,72));

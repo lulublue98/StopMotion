@@ -24,7 +24,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     }
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
-	if (opt.equals("Line")) {
+	if (opt.equals("Line") {
 	    this.startDrawing(new Line(startX,startY,
 				       e.getX(),e.getY(),
 				       c));
@@ -62,14 +62,15 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    x = Math.abs(startX-e.getX());
 	    y = Math.abs(startY-e.getY());
 	    int size = (int)Math.sqrt(x*x+y*y);
-	    this.addShape(new Shapes(circle, e.getX(),e.getY(),
-				      size,c));
+	    this.addShape(new Shapes("circle", e.getX(), e.getY(),
+				     size, size, c));
 	    this.stopDrawing();
 	} else if (opt.equals("Rectangle")) {
 	    double width,length;
 	    width = Math.abs(startX-e.getX());
 	    length = Math.abs(startY-e.getY());
-	    this.addShape(new Shapes(rectangle, startX, startY, width, length);
+	    this.addShape(new Shapes("rectangle", e.getX(), e.getY(), 
+				     width, length, c));
 	this.update(this.getGraphics());
     }
     
@@ -129,8 +130,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	}
 	for (Shapes shp : shapes) {
 	    g.setColor(shp.c);
-	    if 
-	    g.fillOval(shp.x,shp.y,shp.r,shp.r);
+	    if ( shp.which == true ) {
+		g.fillOval(shp.x,shp.y,shp.r,shp.r);
+	    } else if ( shp.which == false ) {
+		g.fillRect(shp.x,shp.y,shp.w,shp.h);
+	    }
 	}
 	for (Line l : lines) {
 	    g.setColor(l.c);

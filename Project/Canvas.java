@@ -15,6 +15,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     private int startX,startY;
     private int oldX, oldY;
     private Color c;
+    private Color bkgr;
     private boolean drawing = false;
     private boolean enabled = true;
     private CheckboxGroup options;
@@ -68,15 +69,21 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	this.update(this.getGraphics());
     }
     
-    public Canvas(CheckboxGroup options) {
+    public Canvas(CheckboxGroup options, JComboBox background) {
 	this.options = options;
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);
 	c = new Color(0, 0, 0);
+        setOpaque(true);
     }
 
     public void setLineColor( Color color ) {
 	c = color;
+    }
+
+    public void setBackgroundColor( Color color ) {
+	bkgr = color;
+	setBackground(bkgr);
     }
 
     public void startDrawing(Line l) {

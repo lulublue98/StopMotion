@@ -10,19 +10,26 @@ import javax.imageio.*;
 public class Gui implements ActionListener {
 
     private JFrame frame;
-    private JButton clear, undo, save, upload;
+    private JButton clear, undo, save, upload, set;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
     private Checkbox Linebox, Drawbox, Circlebox;
+    private JComboBox background;
+    private Color bgopt;
     JTextArea text1, text2;
     private String s, f;
-    private JLabel l1, l2;
+    private JLabel l1, l2, l3;
     private JLabel label;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,
 	gr1, gr2, gr3, gr4;
+
+    private Color[] bgcolors = { Color.white, Color.black,
+				 Color(102,178,255),
+				 Color(0,0,102),
+				 Color(76,153,0) };
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
@@ -41,6 +48,11 @@ public class Gui implements ActionListener {
 	    ImageIcon image = new ImageIcon( f );
 	    label.setIcon(image);
 	    canvas.add(label);
+	} else if ( e.getSource() == set ) {
+	    canvas.setBackgroundColor( bgopt );
+	} else if ( e.getSource() == background ) {
+	    int index = background.getSelectedIndex();
+	    System.out.println(index);
 	}
     }
 
@@ -56,7 +68,7 @@ public class Gui implements ActionListener {
 	header.setPreferredSize(new Dimension(1000,200));
 	header.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
-	
+
 	GridBagConstraints h = new GridBagConstraints();
 	h.gridy = 0;
 	h.gridx = 0;
@@ -86,8 +98,21 @@ public class Gui implements ActionListener {
 	text2.setRows(1);
 	text2.setBorder(BorderFactory.createLineBorder(Color.blue,2));
 	header.add(text2, h);
+	h.gridy = 2;
+	h.gridx = 0;
+	set = new JButton("Set");
+	set.addActionListener(this);
+	header.add(set, h);
+	h.gridx = 1;
+	l3 = new JLabel("Choose background color:  ");
+	header.add(l3, h);
+	h.gridx = 2;
+	String[] coloropts = {"white", "black", "sky", "night sky", "green"};
+	background = new JComboBox(coloropts);
+	background.addActionListener(this);
+	header.add(background, h);
 
-	canvas = new Canvas(options);
+	canvas = new Canvas(options, background);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
 	label = new JLabel();

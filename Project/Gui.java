@@ -51,7 +51,7 @@ public class Gui implements ActionListener {
 	    canvas.setBackgroundColor( bgopt );
 	} else if ( e.getSource() == background ) {
 	    int index = background.getSelectedIndex();
-	    System.out.println(index);
+	    bgopt = bgcolors[index];
 	}
     }
 

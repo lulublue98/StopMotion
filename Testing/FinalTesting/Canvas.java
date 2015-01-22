@@ -7,37 +7,34 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-
 public class Canvas extends JPanel implements MouseListener, MouseMotionListener {
 
     private ArrayList<Line> lines = new ArrayList<Line>();
+    private ArrayList<Circle> circles = new ArrayList<Circle>();
     private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
     private Color c;
+    private Color bkgr;
     private boolean drawing = false;
     private boolean enabled = true;
     private CheckboxGroup options;
 
     public void mouseMoved(MouseEvent e) {
     }
-
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
 	if (opt.equals("Line")) {
 	    this.startDrawing(new Line(startX,startY,
-					   e.getX(),e.getY(),
-					   c));
+				       e.getX(),e.getY(),
+				       c));
 	}
 	else if (opt.equals("Freehand")) {
 	    this.addLine(new Line(oldX, oldY,
-				      e.getX(),e.getY(),
-				      c));
-		oldX = e.getX();
-		oldY = e.getY();
+				  e.getX(),e.getY(),
+				  c));
+	    oldX = e.getX();
+	    oldY = e.getY();
 	}
 	this.update(this.getGraphics());
     }
@@ -55,25 +52,38 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     }
     public void mouseReleased(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
-	if (opt.equals("Line"))
-	    {
-		this.addLine(new Line(startX,startY,
-				      e.getX(),e.getY(),
-				      c));
-		this.stopDrawing();
-	    }
+	if (opt.equals("Line")) {
+	    this.addLine(new Line(startX,startY,
+				  e.getX(),e.getY(),
+				  c));
+	    this.stopDrawing();
+	} else if (opt.equals("Circle")) {
+	    double x,y;
+	    x = Math.abs(startX-e.getX());
+	    y = Math.abs(startY-e.getY());
+	    int size = (int)Math.sqrt(x*x+y*y);
+	    this.addCircle(new Circle(e.getX(),e.getY(),
+				      size,c));
+	    this.stopDrawing();
+	}
 	this.update(this.getGraphics());
     }
-
-    public Canvas(CheckboxGroup options) {
+    
+    public Canvas(CheckboxGroup options, JComboBox background) {
 	this.options = options;
 	this.addMouseListener(this);
 	this.addMouseMotionListener(this);
 	c = new Color(0, 0, 0);
+        setOpaque(true);
     }
 
     public void setLineColor( Color color ) {
 	c = color;
+    }
+
+    public void setBackgroundColor( Color color ) {
+	bkgr = color;
+	setBackground(bkgr);
     }
 
     public void startDrawing(Line l) {
@@ -87,12 +97,17 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
     public void clear() {
 	lines = new ArrayList<Line>();
+	circles = new ArrayList<Circle>();
 	drawing=false;
 	this.update(this.getGraphics());
     }
 
     public void addLine(Line l) {
 	lines.add(l);
+    }
+
+    public void addCircle(Circle cir) {
+	circles.add(cir);
     }
 
     public void removeLine() {
@@ -108,8 +123,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
 	}
+	for (Circle cir : circles) {
+	    g.setColor(cir.c);
+	    g.fillOval(cir.x,cir.y,cir.r,cir.r);
+	}
 	for (Line l : lines) {
-	    g.setColor(l.getColor());
+	    g.setColor(l.c);
 	    g.drawLine(l.x0,l.y0,l.x1,l.y1);
 	}
     }
@@ -121,14 +140,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
         Graphics2D g2 = bi.createGraphics();  
         panel.paint(g2);  
         g2.dispose();  
-        try  
-	    {  
-		ImageIO.write(bi, "jpg", new File(x + ".jpg"));  
-	    }  
-        catch(IOException ioe)  
-	    {  
-		System.out.println("Panel write help: " + ioe.getMessage());  
-	    }  
+        try {  
+	    ImageIO.write(bi, "jpg", new File(x + ".jpg"));  
+	}  
+        catch(IOException ioe) {  
+	    System.out.println("Panel write help: " + ioe.getMessage());  
+	}  
     }
 
 }

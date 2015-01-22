@@ -10,19 +10,25 @@ import javax.imageio.*;
 public class Gui implements ActionListener {
 
     private JFrame frame;
-    private JButton clear, undo, save, upload;
+    private JButton clear, undo, save, upload, set;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
     private Checkbox Linebox, Drawbox, Circlebox;
+    private JComboBox background;
+    private Color bgopt;
     JTextArea text1, text2;
     private String s, f;
-    private JLabel l1, l2;
+    private JLabel l1, l2, l3;
     private JLabel label;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,
 	gr1, gr2, gr3, gr4;
+    
+    private Color[] bgcolors = { Color.white, Color.black,
+				 Color.cyan, Color.blue,
+				 Color.green };
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
@@ -41,6 +47,11 @@ public class Gui implements ActionListener {
 	    ImageIcon image = new ImageIcon( f );
 	    label.setIcon(image);
 	    canvas.add(label);
+	} else if ( e.getSource() == set ) {
+	    canvas.setBackgroundColor( bgopt );
+	} else if ( e.getSource() == background ) {
+	    int index = background.getSelectedIndex();
+	    System.out.println(index);
 	}
     }
 
@@ -54,8 +65,9 @@ public class Gui implements ActionListener {
 	frame = new JFrame("StopMotion");
 	header = new JPanel(new GridBagLayout());
 	header.setPreferredSize(new Dimension(1000,200));
+	header.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
-	
+
 	GridBagConstraints h = new GridBagConstraints();
 	h.gridy = 0;
 	h.gridx = 0;
@@ -85,11 +97,23 @@ public class Gui implements ActionListener {
 	text2.setRows(1);
 	text2.setBorder(BorderFactory.createLineBorder(Color.blue,2));
 	header.add(text2, h);
+	h.gridy = 2;
+	h.gridx = 0;
+	set = new JButton("Set");
+	set.addActionListener(this);
+	header.add(set, h);
+	h.gridx = 1;
+	l3 = new JLabel("Choose background color:  ");
+	header.add(l3, h);
+	h.gridx = 2;
+	String[] coloropts = {"white", "black", "sky", "night sky", "green"};
+	background = new JComboBox<String>(coloropts);
+	background.addActionListener(this);
+	header.add(background, h);
 
-	canvas = new Canvas(options);
+	canvas = new Canvas(options, background);
 	frame.getContentPane().add(canvas, BorderLayout.WEST);
 	canvas.setPreferredSize(new Dimension(600,500));
-	canvas.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	label = new JLabel();
 	canvas.add(label);
 
@@ -98,24 +122,25 @@ public class Gui implements ActionListener {
 	frame.getContentPane().add(toolbox, BorderLayout.EAST);
 	toolbox.setBorder(BorderFactory.createLineBorder(Color.red, 5));
 	
-	GridBagConstraints f = new GridBagConstraints();
-	f.insets = new Insets(10,10,50,50);
-	f.gridx = 0;
-	f.gridy = 0;
+	GridBagConstraints t = new GridBagConstraints();
+	t.insets = new Insets(10,10,50,50);
+	t.gridx = 0;
+	t.gridy = 0;
 	clear = new JButton("Clear");
 	clear.addActionListener(this);
-	toolbox.add(clear, f);
-	f.gridx = 1;
+	toolbox.add(clear, t);
+	t.gridx = 1;
 	undo = new JButton("Undo");
 	undo.addActionListener(this);
-	toolbox.add(undo, f);
-	f.gridy = 1;
-	f.gridx = 0;
-	toolbox.add(Linebox, f);
-	f.gridx = 1;
-	toolbox.add(Drawbox, f);
-	f.gridx = 2;
-	toolbox.add(Circlebox, f);
+	toolbox.add(undo, t);
+	t.gridy = 1;
+	t.gridx = 0;
+	toolbox.add(Linebox, t);
+	t.gridx = 1;
+	toolbox.add(Drawbox, t);
+	t.gridy = 2;
+	t.gridx = 0;
+	toolbox.add(Circlebox, t);
 
 	ColorPanel = new JPanel();
 	ColorPanel.setPreferredSize(new Dimension(72,72));
@@ -174,16 +199,16 @@ public class Gui implements ActionListener {
 	c16.addMouseListener(c16);
 	gr1 = new ColorButton(0, 0, 0);
 	gr1.addCanvas( canvas );
-	gr1.addMouseListener(c16);
+	gr1.addMouseListener(gr1);
 	gr2 = new ColorButton(75, 75, 75);
 	gr2.addCanvas( canvas );
-	gr2.addMouseListener(c16);
+	gr2.addMouseListener(gr2);
 	gr3 = new ColorButton(150, 150, 150);
 	gr3.addCanvas( canvas );
-	gr3.addMouseListener(c16);
+	gr3.addMouseListener(gr3);
 	gr4 = new ColorButton(255, 255, 255);
 	gr4.addCanvas( canvas );
-	gr4.addMouseListener(c16);
+	gr4.addMouseListener(gr4);
 
 	GridBagConstraints g = new GridBagConstraints();
 	g.gridx = 0;
@@ -230,11 +255,11 @@ public class Gui implements ActionListener {
 	gr.gridy = 3;
 	GreyScale.add(gr4, gr);	
 
-	f.gridy = 2;
-	f.gridx = 0;
-	toolbox.add(ColorPanel, f);
-	f.gridx = 1;
-	toolbox.add(GreyScale, f);
+	t.gridy = 3;
+	t.gridx = 0;
+	toolbox.add(ColorPanel, t);
+	t.gridx = 1;
+	toolbox.add(GreyScale, t);
 
 	frame.setSize(1000,700);
 	frame.setVisible(true);

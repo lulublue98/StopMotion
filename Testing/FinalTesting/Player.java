@@ -45,7 +45,7 @@ public class Player implements ActionListener {
 	    image = images[x];
 	    label.setIcon(image);
 	    try {
-		Thread.sleep(100);
+		Thread.sleep(1000);
 	    } 
 	    catch ( Exception e) {
 		System.out.println("Whoops...");
@@ -62,6 +62,7 @@ public class Player implements ActionListener {
 	
 	header = new JPanel(new GridBagLayout());
 	header.setPreferredSize(new Dimension(1000,200));
+	header.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	frame.getContentPane().add(header, BorderLayout.NORTH);
 	
 	GridBagConstraints h = new GridBagConstraints();
@@ -83,7 +84,6 @@ public class Player implements ActionListener {
 	screen = new JPanel(new GridBagLayout());
 	screen.setPreferredSize(new Dimension(600,500));
 	frame.getContentPane().add(screen, BorderLayout.WEST);
-	screen.setBorder(BorderFactory.createLineBorder(Color.blue, 5));
 	label = new JLabel();
 	screen.add(label);
 

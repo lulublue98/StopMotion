@@ -10,7 +10,7 @@ import javax.imageio.*;
 public class Canvas extends JPanel implements MouseListener, MouseMotionListener {
 
     private ArrayList<Line> lines = new ArrayList<Line>();
-    private ArrayList<Circle> circles = new ArrayList<Circle>();
+    private ArrayList<Shapes> shapes = new ArrayList<Shapes>();
     private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
@@ -65,7 +65,11 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    this.addCircle(new Circle(e.getX(),e.getY(),
 				      size,c));
 	    this.stopDrawing();
-	}
+	} else if (opt.equals("Rectangle")) {
+	    double width,length;
+	    width = Math.abs(startX-e.getX());
+	    length = Math.abs(startY-e.getY());
+	    this.addRectangle(startX, startY, width, length);
 	this.update(this.getGraphics());
     }
     

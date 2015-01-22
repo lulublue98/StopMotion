@@ -28,10 +28,11 @@ Project Log
 1/14/15 -- Worked on figuring out how to put an image as the background image in a canvas (SC)
 
 1/15/15 -- finished ColorPanels + made player GUI (LC)
-        -- worked on JText Area (SC)
+        -- added JText Area (SC)
         
-1/16/15 -- got textArea to show up in GUI and also finalized capturing the panel as an image. You can now specify 
-           the names of the different picture files inside the GUI. (SC)
+1/16/15 -- got JTextArea to show up in GUI and also finalized capturing the panel as an image. You can now specify 
+           the names of the different picture files inside the GUI!!! (SC)
+        -- fixed the bug that caused the program to crash! (SC)
         -- continued to work on uploading pictured to the canvas, made some headway (LC)
         -- worked more on uploading picture to canvas but ran into some difficulties (SC)
 

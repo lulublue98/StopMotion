@@ -25,11 +25,10 @@ public class Gui implements ActionListener {
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
 	c9, c10, c11, c12, c13, c14, c15, c16,
 	gr1, gr2, gr3, gr4;
-
+    
     private Color[] bgcolors = { Color.white, Color.black,
-				 Color(102,178,255),
-				 Color(0,0,102),
-				 Color(76,153,0) };
+				 Color.cyan, Color.blue,
+				 Color.green };
 
     public void actionPerformed(ActionEvent e) {
 	if ( e.getSource() == clear ) {
@@ -108,7 +107,7 @@ public class Gui implements ActionListener {
 	header.add(l3, h);
 	h.gridx = 2;
 	String[] coloropts = {"white", "black", "sky", "night sky", "green"};
-	background = new JComboBox(coloropts);
+	background = new JComboBox<String>(coloropts);
 	background.addActionListener(this);
 	header.add(background, h);
 

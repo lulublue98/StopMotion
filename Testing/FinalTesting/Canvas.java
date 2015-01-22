@@ -62,14 +62,14 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    x = Math.abs(startX-e.getX());
 	    y = Math.abs(startY-e.getY());
 	    int size = (int)Math.sqrt(x*x+y*y);
-	    this.addCircle(new Circle(e.getX(),e.getY(),
+	    this.addShape(new Shapes(circle, e.getX(),e.getY(),
 				      size,c));
 	    this.stopDrawing();
 	} else if (opt.equals("Rectangle")) {
 	    double width,length;
 	    width = Math.abs(startX-e.getX());
 	    length = Math.abs(startY-e.getY());
-	    this.addRectangle(startX, startY, width, length);
+	    this.addShape(new Shapes(rectangle, startX, startY, width, length);
 	this.update(this.getGraphics());
     }
     
@@ -110,7 +110,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	lines.add(l);
     }
 
-    public void addCircle(Circle cir) {
+    public void addShape(Circle cir) {
 	circles.add(cir);
     }
 
@@ -127,9 +127,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
 	}
-	for (Circle cir : circles) {
-	    g.setColor(cir.c);
-	    g.fillOval(cir.x,cir.y,cir.r,cir.r);
+	for (Shapes shp : shapes) {
+	    g.setColor(shp.c);
+	    if 
+	    g.fillOval(shp.x,shp.y,shp.r,shp.r);
 	}
 	for (Line l : lines) {
 	    g.setColor(l.c);

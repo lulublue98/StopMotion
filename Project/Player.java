@@ -24,16 +24,15 @@ public class Player implements ActionListener {
     private JPanel header, screen, toolbox;
     private JButton upload, play;
     private ImageIcon temp, image;
+    private boolean playing;
     private int numPics;
     private JLabel l, label;
     private ImageIcon[] images = new ImageIcon[1000];
-    //private String PicList = "";
     JTextArea text;
 
     public void actionPerformed(ActionEvent e){
 	if ( e.getSource() == upload ) {
 	    temp = new ImageIcon( text.getText() + ".jpg");
-	    //PicList = PicList + numPics + ". " + text.getText() + "\n"
 	    images[numPics] = temp;
 	    numPics = numPics + 1;
 	} else if ( e.getSource() == play ) {
@@ -43,18 +42,16 @@ public class Player implements ActionListener {
 
     public void play() {
 	for (int x=0;x<numPics;x++) {
-	    try {
-		Thread.sleep(1000);
-	    } 
-	    catch ( InterruptedException e) {
-		System.out.println("Whoops...");
-	    }
 	    image = images[x];
 	    label.setIcon(image);
-	    System.out.println(". . . . .");
+	    try {
+		Thread.sleep(1000);
+	    }
+	    catch( InterruptedException e ) {
+	    }
 	}
     }
-
+    
     public Player() {
 
 	frame = new JFrame("StopMotion Player");
@@ -80,7 +77,7 @@ public class Player implements ActionListener {
 	text = new JTextArea();
 	text.setColumns(30);
 	text.setRows(1);
-	text.setBorder(BorderFactory.createLineBorder(Color.blue,2));
+	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
 	header.add(text, h);
 
 	screen = new JPanel(new GridBagLayout());
@@ -104,7 +101,7 @@ public class Player implements ActionListener {
 
     }
 
-   public static void main(String[] args) {
+   public static void main(String[] args) throws InterruptedException {
        Player P = new Player();
    }
 

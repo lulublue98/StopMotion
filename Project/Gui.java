@@ -10,16 +10,16 @@ import javax.imageio.*;
 public class Gui implements ActionListener {
 
     private JFrame frame;
-    private JButton clear, undo, save, upload, set;
+    private JButton clear, undo, save, set;
     private Canvas canvas;
     private JPanel header, toolbox, ColorPanel, GreyScale;
     private CheckboxGroup options;
     private Checkbox Linebox, Drawbox, Circlebox;
     private JComboBox background;
     private Color bgopt;
-    JTextArea text1, text2;
+    JTextArea text;
     private String s, f;
-    private JLabel l1, l2, l3;
+    private JLabel l1, l2;
     private JLabel label;
 
     private ColorButton c1, c2, c3, c4, c5, c6, c7, c8,
@@ -38,15 +38,9 @@ public class Gui implements ActionListener {
 	    canvas.removeLine();
 	    canvas.paintComponent(canvas.getGraphics());
 	} else if ( e.getSource() == save ) {
-	    s = text1.getText();
+	    s = text.getText();
 	    canvas.saveImage(canvas, s);
 	    s = "";
-	} else if ( e.getSource() == upload ) {
-	    f = text2.getText() + ".jpg";
-	    System.out.println(":"+f+":");
-	    ImageIcon image = new ImageIcon( f );
-	    label.setIcon(image);
-	    canvas.add(label);
 	} else if ( e.getSource() == set ) {
 	    canvas.setBackgroundColor( bgopt );
 	} else if ( e.getSource() == background ) {
@@ -78,33 +72,19 @@ public class Gui implements ActionListener {
 	l1 = new JLabel("Enter filename:");
 	header.add(l1, h);	
 	h.gridx = 2;
-	text1 = new JTextArea();
-	text1.setColumns(30);
-	text1.setRows(1);
-	text1.setBorder(BorderFactory.createLineBorder(Color.red,2));
-	header.add(text1, h);
+	text = new JTextArea();
+	text.setColumns(30);
+	text.setRows(1);
+	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
+	header.add(text, h);
 	h.gridy = 1;
-	h.gridx = 0;
-	upload = new JButton("Upload");
-	upload.addActionListener(this);
-	header.add(upload, h);
-	h.gridx = 1;
-	l2 = new JLabel("Upload a background image:  ");
-	header.add(l2, h);
-	h.gridx = 2;
-	text2 = new JTextArea();
-	text2.setColumns(30);
-	text2.setRows(1);
-	text2.setBorder(BorderFactory.createLineBorder(Color.blue,2));
-	header.add(text2, h);
-	h.gridy = 2;
 	h.gridx = 0;
 	set = new JButton("Set");
 	set.addActionListener(this);
 	header.add(set, h);
 	h.gridx = 1;
-	l3 = new JLabel("Choose background color:  ");
-	header.add(l3, h);
+	l2 = new JLabel("Choose background color:  ");
+	header.add(l2, h);
 	h.gridx = 2;
 	String[] coloropts = {"white", "black", "sky", "night sky", "green"};
 	background = new JComboBox<String>(coloropts);

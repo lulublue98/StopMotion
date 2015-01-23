@@ -49,4 +49,5 @@ Project Log
 1/22/15 -- Attempted to fix player.java but some bugs (LC)
 	-- Attempted to create Rectangle drawing but ran out of time (SC)
 
-1/23/15 --
+1/23/15 -- Finished code for adding rectangles but want to try to create a shapes file so didn't put it in final
+	   project file next (SC)

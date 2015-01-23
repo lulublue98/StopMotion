@@ -45,3 +45,8 @@ Project Log
         -- Player is almost done, the play method kind of works (LC)
         -- Worked more on circle code. Having difficulty (SC)
         -- almost completed circle code, one minor aesthetic detail bug (LC)
+
+1/22/15 -- Attempted to fix player.java but some bugs (LC)
+	-- Attempted to create Rectangle drawing but ran out of time (SC)
+
+1/23/15 --

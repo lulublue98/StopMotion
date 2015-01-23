@@ -11,6 +11,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 
     private ArrayList<Line> lines = new ArrayList<Line>();
     private ArrayList<Circle> circles = new ArrayList<Circle>();
+    private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
     private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
@@ -65,6 +66,12 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    this.addCircle(new Circle(e.getX(),e.getY(),
 				      size,c));
 	    this.stopDrawing();
+	} else if (opt.equals("Rectangle")) {
+	    int width,length;
+	    width = Math.abs(startX-e.getX());
+	    length = Math.abs(startY-e.getY());
+	    this.addRect(new Rectangle(e.getX(), e.getY(), 
+				     width, length, c));
 	}
 	this.update(this.getGraphics());
     }
@@ -110,6 +117,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	circles.add(cir);
     }
 
+    public void addRect(Rectangle rect) {
+	rectangles.add(rect);
+    }
+
     public void removeLine() {
 	if ( lines.size() > 0 ) {
 	    lines.remove(lines.size()-1);
@@ -131,6 +142,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	for (Circle cir : circles) {
 	    g.setColor(cir.c);
 	    g.fillOval(cir.x,cir.y,cir.r,cir.r);
+	}
+	for (Rectangle rect : rectangles) {
+	    g.setColor(rect.c);
+	    g.fillRect(rect.x,rect.y,rect.w,rect.z);
 	}
 	for (Line l : lines) {
 	    g.setColor(l.c);

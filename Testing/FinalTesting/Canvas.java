@@ -10,7 +10,7 @@ import javax.imageio.*;
 public class Canvas extends JPanel implements MouseListener, MouseMotionListener {
 
     private ArrayList<Line> lines = new ArrayList<Line>();
-    private ArrayList<Shapes> shapes = new ArrayList<Shapes>();
+    private ArrayList<Circle> circles = new ArrayList<Circle>();
     private Line tmpline;
     private int startX,startY;
     private int oldX, oldY;
@@ -24,7 +24,7 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
     }
     public void mouseDragged(MouseEvent e) {
 	String opt = options.getSelectedCheckbox().getLabel();
-	if (opt.equals("Line") {
+	if (opt.equals("Line")) {
 	    this.startDrawing(new Line(startX,startY,
 				       e.getX(),e.getY(),
 				       c));
@@ -62,15 +62,10 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    x = Math.abs(startX-e.getX());
 	    y = Math.abs(startY-e.getY());
 	    int size = (int)Math.sqrt(x*x+y*y);
-	    this.addShape(new Shapes("circle", e.getX(), e.getY(),
-				     size, size, c));
+	    this.addCircle(new Circle(e.getX(),e.getY(),
+				      size,c));
 	    this.stopDrawing();
-	} else if (opt.equals("Rectangle")) {
-	    double width,length;
-	    width = Math.abs(startX-e.getX());
-	    length = Math.abs(startY-e.getY());
-	    this.addShape(new Shapes("rectangle", e.getX(), e.getY(), 
-				     width, length, c));
+	}
 	this.update(this.getGraphics());
     }
     
@@ -111,12 +106,17 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	lines.add(l);
     }
 
-    public void addShape(Circle cir) {
+    public void addCircle(Circle cir) {
 	circles.add(cir);
     }
 
     public void removeLine() {
-	lines.remove(lines.size()-1);
+	if ( lines.size() > 0 ) {
+	    lines.remove(lines.size()-1);
+	}
+	if ( circles.size() > 0 ) {
+	    circles.remove(circles.size()-1);
+	}
 	drawing=false;
 	this.update(this.getGraphics());
     }
@@ -128,13 +128,9 @@ public class Canvas extends JPanel implements MouseListener, MouseMotionListener
 	    g.drawLine(tmpline.x0,tmpline.y0,
 		       tmpline.x1,tmpline.y1);
 	}
-	for (Shapes shp : shapes) {
-	    g.setColor(shp.c);
-	    if ( shp.which == true ) {
-		g.fillOval(shp.x,shp.y,shp.r,shp.r);
-	    } else if ( shp.which == false ) {
-		g.fillRect(shp.x,shp.y,shp.w,shp.h);
-	    }
+	for (Circle cir : circles) {
+	    g.setColor(cir.c);
+	    g.fillOval(cir.x,cir.y,cir.r,cir.r);
 	}
 	for (Line l : lines) {
 	    g.setColor(l.c);

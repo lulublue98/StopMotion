@@ -4,7 +4,7 @@ StopMotion
 APCS Final Project: The Stop Motion Project
 
 Contributors:
-Lulu Cho
+Lulu Cho &
 Serena Chan
  	
 Our project is a fully functioning stop motion animation generator. The user will be able to draw each individual frame, save them, and then play them back as an animation. Drawing options include lines, freehand drawing, circles, and different color options.
